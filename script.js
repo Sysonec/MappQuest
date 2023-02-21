@@ -202,10 +202,6 @@ class GameState extends ToMapp {
       this._settingsControl(e);
     });
 
-    // Find country position
-    // FIX
-    // CANNOT USE SHOW ELEMENT FUNCTION IF this.openModal NOT BINDED TO THIS
-
     // Timer stop btn
     gameDetailsNav.addEventListener('click', this._stopTimer.bind(this));
 
@@ -334,7 +330,7 @@ class GameState extends ToMapp {
 
       const randomCountryFlags = [];
 
-      // pick 3 random flag indexes from dataCountries.features
+      // Pick 3 random flag indexes from dataCountries.features
       for (let i = 0; i < 3; i++) {
         const randomFlag = Math.floor(
           Math.random() * dataCountries.features.length
@@ -345,7 +341,7 @@ class GameState extends ToMapp {
         }
       }
 
-      // use Promise.all to fetch country data for each flag and populate countriesFound and countryCodes
+      // Use Promise.all to fetch country data for each flag and populate countriesFound and countryCodes
       const countryCodes = await Promise.all(
         randomCountryFlags.map(async randomFlag => {
           randomCountry = dataCountries.features[randomFlag];
@@ -364,7 +360,7 @@ class GameState extends ToMapp {
         })
       );
 
-      // pick a random country code from the three and get the corresponding country object
+      // Pick a random country code from the three and get the corresponding country object
       const randomCountryCode = countryCodes[Math.floor(Math.random() * 3)];
 
       const countryFound = countriesFound.find(
@@ -374,10 +370,10 @@ class GameState extends ToMapp {
       // Set global country var to countryFound
       this.#countryFound = countryFound;
 
-      // display the name of the country to find
+      // Display the name of the country to find
       findFlagName.textContent = `Can you find ${countryFound.name.common}?`;
 
-      // create buttons with each flag, using the data attributes to store the country code and code alternative, and joining the array into a string of HTML
+      // Create buttons with each flag, using the data attributes to store the country code and code alternative, and joining the array into a string of HTML
       guessFlags.innerHTML = countryCodes
         .map(countryCode => {
           const countryFound = countriesFound.find(
@@ -675,6 +671,8 @@ class GameState extends ToMapp {
       this.#difficulty = 'hard';
       this.#guessesLeft = 5;
       removeBtns(btnsHard);
+    } else {
+      return;
     }
 
     if (btn?.classList.contains('go-back-btn')) {

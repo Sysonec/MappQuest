@@ -64,7 +64,7 @@
   align-items: center;
   z-index: 1;
   height: 100vh;
-  background: url('./media/images/glow.jpg') no-repeat center/cover;
+  background-color: var(--black-color);
 }
 
 .game-options {
@@ -79,8 +79,10 @@
   left: 0;
   height: 100%;
   width: 100%;
-  background-color: var(--black-color);
-  opacity: 0.6;
+  -webkit-filter: blur(2px);
+  filter: blur(2px);
+  opacity: 0.4;
+  background: url('./media/images/glow.jpg') no-repeat center/cover;
 }
 
 /* Guess flags minigame */
@@ -112,8 +114,6 @@
 .guess-flags-game .guess-flags .guess-flag-btn .guess-flag-img {
   position: relative;
   height: 100%;
-  /* width: 90%;
-  max-width: 400px; */
 }
 
 .guess-flags-game .guess-flags .guess-flag-btn::before {
@@ -180,7 +180,7 @@
 }
 
 .start-game-content > h3 {
-  font-size: 2rem;
+  font-size: 2.2rem;
   margin: 2.25rem 0;
 }
 
@@ -196,7 +196,7 @@
   top: 0;
   left: 0;
   border-radius: 0;
-  /* border-top-right-radius: 50px; */
+
   border-bottom-right-radius: 50px;
   width: 80px;
   overflow: hidden;
@@ -516,15 +516,6 @@
   color: var(--grey-color);
 }
 
-/* Audio modal */
-/* .map-modal .map-modal-content .audio-controls .audio-slider-info {
-  background-color: rgba(0, 0, 0, 0.3);
-  border-radius: 5px;
-  border: 1px solid var(--white-color);
-  color: var(--black-color);
-  padding: 6px;
-} */
-
 .map-modal-content button {
   height: 40px;
   width: 120px;
@@ -766,21 +757,6 @@
   border-bottom: 2px solid var(--white-color);
 }
 
-/* .timer-min::-webkit-input-placeholder,
-.timer-sec::-webkit-input-placeholder {
-  color: var(--grey-color);
-}
-
-.timer-min::-moz-placeholder,
-.timer-sec::-moz-placeholder {
-  color: var(--grey-color);
-}
-
-.timer-min:-ms-input-placeholder,
-.timer-sec:-ms-input-placeholder {
-  color: var(--grey-color);
-}
-
 .timer-min::-webkit-input-placeholder, .timer-sec::-webkit-input-placeholder {
   color: var(--grey-color);
 }
@@ -800,7 +776,7 @@
 .timer-min::placeholder,
 .timer-sec::placeholder {
   color: var(--grey-color);
-} */
+}
 
 .timer-range-val {
   font-size: 1.6rem;
@@ -848,7 +824,6 @@
   /* Margin right on auto allows the logo to go to the left corner while main content staying in flex-end position */
   margin-left: 15px;
   margin-bottom: 3px;
-  /* position: absolute; */
 }
 
 .game-details,

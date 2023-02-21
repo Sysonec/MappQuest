@@ -28,18 +28,6 @@ body {
   width: 100%;
 }
 
-/* ! IMPORTANT it is not advisable to remove it due to accessibility concers */
-/* button:focus {
-  outline: none !important;
-}
-
-Accessibility concerns
-Assigning outline a value of 0 or none will remove the browser's default focus style. If an element can be interacted with, it must have a visible focus indicator. Provide obvious focus styling if the default focus style is removed.
-
-button {
-  outline: none !important;
-} */
-
 :root {
   --orange-color-darker: rgb(230, 148, 77);
   --orange-color-light: #f59f5b;

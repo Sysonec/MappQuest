@@ -58,11 +58,10 @@ class ToMapp {
 
     this.coords = randomLocation;
 
-    // Set viscosity to 1.0 to avoid "lazy" dragging
     this.map = L.map('map', {
       zoomControl: false,
       maxBoundsViscosity: 0.0,
-      minZoom: 2.0,
+      minZoom: 1.0,
       maxZoom: 20,
     }).setView(this.coords, 3);
 
@@ -663,14 +662,20 @@ class GameState extends ToMapp {
     if (btn?.classList.contains('easy-mode-btn')) {
       this.#difficulty = 'easy';
       this.#guessesLeft = 15;
-    } else if (btn?.classList.contains('medium-mode-btn')) {
+    }
+
+    if (btn?.classList.contains('medium-mode-btn')) {
       this.#difficulty = 'medium';
       this.#guessesLeft = 10;
-    } else if (btn?.classList.contains('hard-mode-btn')) {
+    }
+
+    if (btn?.classList.contains('hard-mode-btn')) {
       this.#difficulty = 'hard';
       this.#guessesLeft = 5;
       removeBtns(btnsHard);
-    } else {
+    }
+
+    if (!btn) {
       return;
     }
 
@@ -1530,7 +1535,7 @@ class GameState extends ToMapp {
     if (
       btn.classList.contains('audio-switch') ||
       btn === switchAudioBtn ||
-      btn.classLsetMarkerist.contains('switch-audio-text')
+      btn.classList.contains('switch-audio-text')
     ) {
       // Mute audio
       switchAudioBtn.checked = !switchAudioBtn.checked;

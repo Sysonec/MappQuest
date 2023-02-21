@@ -30,8 +30,6 @@ const timerLeft = document.querySelector('.timer-count-left');
 const zoomControls = document.querySelector('.zoom-controls');
 const collapseBtn = document.querySelector('.collapse-btn');
 
-////////////////////////////////
-// Geolocation API used at the beginning
 class ToMapp {
   // Public class fields
   map;
@@ -42,22 +40,23 @@ class ToMapp {
 
   // Load world map
   _loadMap() {
-    if (navigator.geolocation)
-      navigator.geolocation.getCurrentPosition(
-        this._loadPosition.bind(this),
-        function () {
-          alert('Could not get your position');
-        }
-      );
+    this._loadPosition();
   }
 
-  // Load user's current position
-  _loadPosition(position) {
-    // Called with a position parameter
-    const { latitude } = position.coords;
-    const { longitude } = position.coords;
+  // Generate random location
+  _generateRandomLocation() {
+    const lat = Math.random() * 180 - 90;
+    const lng = Math.random() * 360 - 180;
 
-    this.coords = [latitude, longitude];
+    return [lat, lng];
+  }
+
+  // Load starting random position
+  _loadPosition() {
+    // Random location
+    const randomLocation = this._generateRandomLocation();
+
+    this.coords = randomLocation;
 
     // Set viscosity to 1.0 to avoid "lazy" dragging
     this.map = L.map('map', {
@@ -65,7 +64,7 @@ class ToMapp {
       maxBoundsViscosity: 0.0,
       minZoom: 2.0,
       maxZoom: 20,
-    }).setView(this.coords, 5);
+    }).setView(this.coords, 3);
 
     // Max bounds to prevent errors and dragging outside of the map
     this.map.setMaxBounds([

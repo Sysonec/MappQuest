@@ -1,0 +1,1044 @@
+/* Start Game Overlay */
+.game-container {
+  transition: all 0.5s var(--ease);
+}
+
+/* Timer */
+.timer-count {
+  opacity: 0.97;
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.timer-count span {
+  position: inherit;
+  top: 45px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.7rem;
+  padding: 8px 15px;
+  background-color: rgba(245, 159, 91, 0.97);
+  border: 2px solid var(--white-color);
+  color: var(--light-dark-color);
+  border-radius: 50px;
+  width: 100px;
+  text-align: center;
+}
+
+.timer-count .timer-count-left i {
+  position: absolute;
+  top: 5px;
+  left: 8px;
+  font-size: 1.4rem;
+}
+
+.timer-count .timer-count-left .timer-stop-btn {
+  position: absolute;
+  top: 0;
+  left: 70%;
+  background: 0;
+  border: 0;
+  cursor: pointer;
+}
+
+.timer-count .timer-count-left .timer-stop-btn i {
+  font-size: 1.6rem;
+  color: var(--light-dark-color);
+}
+
+.timer-count::after {
+  content: '';
+  display: none;
+}
+
+/* Start game menu */
+.start-game {
+  overflow: hidden;
+  color: var(--white-color);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  height: 100vh;
+  background: url('./media/images/glow.jpg') no-repeat center/cover;
+}
+
+.game-options {
+  transition: all 0.3s var(--ease-in-out);
+}
+
+.start-game::before {
+  content: '';
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: var(--black-color);
+  opacity: 0.6;
+}
+
+/* Guess flags minigame */
+.guess-flags-game {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.guess-flags-game .find-flag-name {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: var(--white-color);
+  font-weight: bold;
+  padding: 0 5px;
+}
+
+.guess-flags-game .guess-flags .guess-flag-btn {
+  position: relative;
+  cursor: pointer;
+  margin: 5px 25px;
+  background: none;
+  border: 0;
+  height: 70%;
+}
+
+.guess-flags-game .guess-flags .guess-flag-btn .guess-flag-img {
+  position: relative;
+  height: 100%;
+  /* width: 90%;
+  max-width: 400px; */
+}
+
+.guess-flags-game .guess-flags .guess-flag-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 0.2s;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+}
+
+.guess-flags-game .guess-flags .guess-flag-btn:hover::before {
+  opacity: 1;
+}
+
+.guess-flags-game .guess-flags .guess-flag-btn.incorrect-flag::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  transition: opacity 0.2s;
+  background-color: rgba(0, 0, 0, 0.97);
+}
+
+.start-game-content,
+.game-options {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.start-game-content {
+  position: absolute;
+  top: 20%;
+  text-align: center;
+}
+
+.game-options button:not(.go-back-btn) {
+  margin: 30px 20px 10px 20px;
+  width: 185px;
+  height: 55px;
+}
+
+.start-game-content button {
+  margin: 5px 15px;
+}
+
+.start-game-content .start-flags-game-btn i {
+  top: 6px;
+  left: 10px;
+}
+
+.start-game-content > img,
+.game-options > img {
+  width: 250px;
+}
+
+.start-game-content > h3 {
+  font-size: 2rem;
+  margin: 2.25rem 0;
+}
+
+.start-game-content > h2,
+.game-options > h2 {
+  font-size: 3.2rem;
+}
+
+.guess-flags-game .go-back-btn,
+.game-options .go-back-btn {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  border-radius: 0;
+  /* border-top-right-radius: 50px; */
+  border-bottom-right-radius: 50px;
+  width: 80px;
+  overflow: hidden;
+}
+
+.guess-flags-game .go-back-btn i,
+.game-options .go-back-btn i {
+  font-size: 3.8rem;
+  position: absolute;
+  top: 50%;
+  left: 35%;
+  transform: translate(-35%, -50%);
+}
+
+.close-modal {
+  cursor: pointer;
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+.close-modal i,
+.leave-game-btn i {
+  transition: color 0.2s var(--ease-in-out);
+}
+
+.close-modal i,
+.main-settings .leave-game-btn i {
+  font-size: 2.1rem;
+  color: var(--light-dark-color);
+}
+
+.close-modal:hover i,
+.leave-game-btn:hover i {
+  color: var(--white-color);
+}
+
+.leave-game-btn:hover .leave-game-text {
+  opacity: 1;
+  color: var(--white-color);
+}
+
+/* Button general styling */
+.fill-btn {
+  text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.4);
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 2.4rem;
+  padding: 10px 18px;
+  cursor: pointer;
+  color: var(--light-dark-color);
+  height: 60px;
+  width: 210px;
+  border-radius: 30px;
+  border: 3px solid var(--white-color);
+  box-shadow: 2px 2px 3px 2px rgba(0, 0, 0, 0.4);
+  display: inline-block;
+  vertical-align: middle;
+  transform: perspective(1px) translateZ(0);
+  transition-property: all;
+  transition-duration: 0.3s;
+}
+
+.fill-btn:hover {
+  background-color: var(--orange-color-darker);
+}
+
+.fill-btn:before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--orange-color-darker);
+  transform: scaleX(0);
+  border-radius: 30px;
+  transform-origin: 50% 50%;
+  transition-property: transform;
+  transition-duration: 0.3s;
+  transition-timing-function: var(--ease-in-out);
+}
+
+.fill-btn:hover,
+.fill-btn:active,
+.fill-btn:hover > i,
+.fill-btn:active > i {
+  color: var(--white-color);
+}
+
+.fill-btn:hover:before,
+.fill-btn:active:before {
+  transform: scaleX(1);
+}
+
+.fill-btn i {
+  font-size: 2.4rem;
+  transition: color 0.2s var(--ease-in-out);
+  color: var(--light-dark-color);
+  position: absolute;
+  top: 5px;
+  left: 8px;
+}
+
+/* Main modal */
+.map-modal {
+  z-index: 999999;
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, 0);
+  width: 50%;
+}
+
+.map-modal p {
+  color: var(--white-color);
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+}
+
+.map-modal-content {
+  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: inherit;
+  bottom: 0;
+  left: 0;
+  border: 2px solid var(--white-color);
+  border-radius: 20px;
+  padding: 2rem;
+  width: 100%;
+  height: 250px;
+  background: rgb(245, 159, 91);
+  background: linear-gradient(
+    323deg,
+    rgba(245, 159, 91, 0.97) 18%,
+    rgba(233, 123, 27, 0.97) 50%,
+    rgba(245, 159, 91, 0.97) 92%
+  );
+  border-bottom-left-radius: 0;
+  border-bottom: 0;
+  border-bottom-right-radius: 0;
+}
+
+.map-modal-content button i {
+  position: absolute;
+  left: 7px;
+  top: 5px;
+  font-size: 1.7rem;
+}
+
+/* Warning */
+.warning-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3px;
+  background-color: var(--warning-color);
+  border: 1px solid var(--white-color);
+  border-radius: 50px;
+  font-size: 1.35rem;
+}
+
+.warning-info i {
+  font-size: 1.7rem;
+  margin-right: 5px;
+}
+
+.options {
+  display: flex;
+}
+
+/* Marker modal */
+/* Change cursor while setting marker */
+.set-marker-cursor {
+  cursor: crosshair !important;
+}
+
+.leaflet-interactive {
+  cursor: var(--cursor) !important;
+}
+
+.marker-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.marker-btns .remove-markers-btn,
+.marker-btns .add-marker-btn {
+  margin-top: 20px;
+  width: 130px;
+}
+
+.marker-btns .remove-markers-btn {
+  width: 145px;
+}
+
+.marker-btns .remove-markers-btn i {
+  font-size: 1.2rem;
+  top: 7px;
+}
+
+.marker-content .remove-marker-btn {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  margin: 0;
+  padding: 0;
+  margin-left: 10px;
+}
+
+.marker-content .remove-marker-btn i {
+  font-size: 1.3rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.marker-menu {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.marker-menu .marker-name {
+  background: transparent;
+  border: 2px solid var(--white-color);
+  padding: 3px 10px;
+  border-radius: 25px;
+  height: 33px;
+  color: var(--white-color);
+  width: 150px;
+  margin: auto;
+}
+
+.marker-info {
+  position: absolute;
+  top: 8%;
+  color: #060b1b;
+  font-size: 1.5rem;
+}
+
+.map-modal .map-modal-content .marker-name-warning,
+.map-modal .map-modal-content .timer-warning {
+  transition: all 0.2s var(--ease-in-out);
+  position: absolute;
+  font-size: 1.2rem;
+  color: var(--warning-color);
+}
+
+.marker-name-warning {
+  bottom: 70%;
+  right: 4%;
+  transform: translate(-4%, -70%);
+}
+
+.marker-info {
+  transition: all 0.2s var(--ease-in-out);
+}
+
+.timer-warning {
+  width: 100%;
+  top: 33%;
+  left: 50%;
+  transform: translate(-50%, -33%);
+}
+
+.input-warning {
+  border-color: var(--warning-color) !important;
+}
+
+.marker-menu .marker-name,
+.input-timer .timer-min,
+.input-timer .timer-sec {
+  transition: all 0.2s var(--ease-in-out);
+}
+
+.marker-menu label,
+.marker-menu .marker-name {
+  font-size: 1.5rem;
+  margin-right: 5px;
+}
+
+.marker-menu .add-marker-btn {
+  margin: 0;
+}
+
+.marker-menu .marker-name:focus {
+  outline: 0;
+}
+
+.marker-menu .marker-name::-webkit-input-placeholder {
+  color: var(--grey-color);
+}
+
+.marker-menu .marker-name::-moz-placeholder {
+  color: var(--grey-color);
+}
+
+.marker-menu .marker-name:-ms-input-placeholder {
+  color: var(--grey-color);
+}
+
+.marker-menu .marker-name::-ms-input-placeholder {
+  color: var(--grey-color);
+}
+
+.marker-menu .marker-name::placeholder {
+  color: var(--grey-color);
+}
+
+/* Audio modal */
+/* .map-modal .map-modal-content .audio-controls .audio-slider-info {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  border: 1px solid var(--white-color);
+  color: var(--black-color);
+  padding: 6px;
+} */
+
+.map-modal-content button {
+  height: 40px;
+  width: 120px;
+  font-size: 1.6rem;
+  text-transform: capitalize;
+  margin: 10px 15px;
+  padding: 0;
+}
+
+.map-modal-content i {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.map-modal-content button .fa-thumbs-down {
+  position: absolute;
+  color: var(--warning-color);
+}
+
+.map-modal-content button .fa-thumbs-up {
+  color: #009009;
+}
+
+.map-modal-content button .fa-thumbs-down,
+.map-modal-content button .fa-thumbs-up {
+  position: absolute;
+  font-size: 1.8rem;
+  top: 13px;
+  left: 10px;
+}
+
+/* Settings modal */
+.main-settings {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-settings .audio-controls .audio-slider {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-settings .audio-controls .audio-slider i {
+  font-size: 1.8rem;
+  margin-right: 5px;
+}
+
+.main-settings .audio-controls .audio-music-slider {
+  margin-right: 20px;
+}
+
+.main-settings .audio-controls .audio-effects-slider {
+  margin-left: 20px;
+}
+
+.audio-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin: 10px 0;
+}
+
+.main-settings .audio-controls .audio-slider input {
+  height: 8px;
+  width: 120px;
+}
+
+.main-settings .audio-controls .audio-slider .audio-slider-text {
+  font-size: 1.3rem;
+}
+
+.main-settings .audio-controls .audio-music-slider .audio-slider-text {
+  position: absolute;
+  top: -20px;
+  left: 2px;
+}
+
+.main-settings .audio-controls .audio-effects-slider .audio-slider-text {
+  position: absolute;
+  top: -20px;
+  left: 2px;
+}
+
+/* Settings modal - Switch buttons */
+.switch-btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.switch-btn {
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+}
+
+.switch-btn i {
+  font-size: 1.8rem;
+  margin-bottom: 3px;
+}
+
+.switch-btn-text {
+  font-size: 1.4rem;
+  margin-bottom: 3px;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  -moz-user-select: none;
+  user-select: none; /* Standard syntax */
+  width: 100;
+  white-space: nowrap;
+}
+
+.switch-btn input[type='checkbox'] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.switch-btn label.switch {
+  cursor: pointer;
+  width: 45px;
+  height: 20px;
+  background-color: var(--grey-color);
+  border-radius: 20px;
+  position: relative;
+  display: inline-block;
+  transition: background-color 0.3s;
+  pointer-events: none;
+}
+
+.switch-btn label.switch span.slider {
+  position: absolute;
+  top: 1px;
+  left: 0;
+  width: 18px;
+  height: 18px;
+  background-color: var(--white-color);
+  border-radius: 50%;
+  transition: 0.4s;
+  pointer-events: none;
+}
+
+.switch-btn input[type='checkbox']:checked + label.switch {
+  background-color: var(--light-dark-color);
+}
+
+.switch-btn input[type='checkbox']:focus + label.switch {
+  box-shadow: 0 0 1px var(--light-dark-color);
+}
+
+.switch-btn input[type='checkbox']:checked + label.switch span.slider {
+  transform: translateX(25px);
+}
+
+/* Leave game btn */
+.map-modal .map-modal-content .main-settings .leave-game-btn {
+  margin: 0;
+  padding: 0;
+  width: 0;
+  height: 0;
+  cursor: pointer;
+  position: absolute;
+  top: 5px;
+  left: 3px;
+  border-radius: 5px;
+  background: 0;
+  border: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-settings .leave-game-btn i {
+  position: absolute;
+  top: 3px;
+  right: 0;
+}
+
+.leave-game-btn .leave-game-text {
+  opacity: 0;
+  transition: opacity 0.3s var(--ease-in-out);
+  color: var(--light-dark-color);
+  font-weight: bold;
+  transform: translateY(25px);
+  margin-left: 2px;
+}
+
+/* Modal timer */
+.modal-timer-count {
+  text-align: center;
+  position: relative;
+}
+
+.input-timer {
+  margin: 20px 0;
+}
+
+.modal-timer-count .save-time,
+.modal-timer-count .start-timer,
+.modal-timer-count .clear-time {
+  margin: 0;
+  margin: 5px 10px;
+}
+
+.modal-timer-count button {
+  margin-top: 15px;
+}
+
+.map-modal-content i:not(.close-modal i, .leave-game-btn i) {
+  pointer-events: none;
+}
+
+.map-modal-content h3 {
+  font-size: 1.7rem;
+  margin: 25px auto;
+}
+
+.timer-min,
+.timer-sec {
+  width: 55px;
+  text-align: center;
+  background-color: transparent;
+  color: var(--white-color);
+  font-size: 1.6rem;
+  padding: 5px 10px;
+  border: 0;
+  border-bottom: 2px solid var(--white-color);
+}
+
+/* .timer-min::-webkit-input-placeholder,
+.timer-sec::-webkit-input-placeholder {
+  color: var(--grey-color);
+}
+
+.timer-min::-moz-placeholder,
+.timer-sec::-moz-placeholder {
+  color: var(--grey-color);
+}
+
+.timer-min:-ms-input-placeholder,
+.timer-sec:-ms-input-placeholder {
+  color: var(--grey-color);
+}
+
+.timer-min::-webkit-input-placeholder, .timer-sec::-webkit-input-placeholder {
+  color: var(--grey-color);
+}
+
+.timer-min::-moz-placeholder, .timer-sec::-moz-placeholder {
+  color: var(--grey-color);
+}
+
+.timer-min:-ms-input-placeholder, .timer-sec:-ms-input-placeholder {
+  color: var(--grey-color);
+}
+
+.timer-min::-ms-input-placeholder, .timer-sec::-ms-input-placeholder {
+  color: var(--grey-color);
+}
+
+.timer-min::placeholder,
+.timer-sec::placeholder {
+  color: var(--grey-color);
+} */
+
+.timer-range-val {
+  font-size: 1.6rem;
+  margin: 0;
+  margin-left: 10px;
+  width: 100px;
+  border: 0;
+}
+
+#play-again {
+  margin-top: 10px;
+  width: 150px;
+  height: 45px;
+}
+
+#play-again i {
+  font-size: 1.7rem;
+  position: absolute;
+  top: 13px;
+  left: 7px;
+}
+
+.game {
+  background-color: #5e564d;
+  height: 100vh;
+  color: var(--white-color);
+  font-size: 1.4rem;
+}
+
+.text-options {
+  font-weight: 500;
+}
+
+/* Game navbar */
+#find-country-name,
+#guesses-num,
+#score-num,
+#highscore-num {
+  color: var(--light-dark-color);
+  margin-left: 3px;
+}
+
+.logo-details {
+  width: 90px;
+  /* Margin right on auto allows the logo to go to the left corner while main content staying in flex-end position */
+  margin-left: 15px;
+  margin-bottom: 3px;
+  /* position: absolute; */
+}
+
+.game-details,
+.buttons-container {
+  z-index: 9999;
+}
+
+.game-details {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 55px;
+  width: 75vw;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.game-details div::after {
+  content: '';
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: var(--orange-color-light);
+  border: 1px solid var(--white-color);
+  box-shadow: 1px 3px 6px rgba(0, 0, 0, 0.35);
+  opacity: 0.6;
+  border-radius: 50px;
+  border-top: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.game-details div:nth-child(odd),
+.game-details div:first-of-type {
+  border: 1px solid var(--white-color);
+  border-top: 0;
+  border-bottom: 0;
+}
+
+.game-details div:first-of-type {
+  border-left: 0;
+}
+
+.game-details div:last-of-type {
+  border-right: 0;
+}
+
+.game-details div {
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.6rem;
+  margin: 0 5px;
+}
+
+.game-details span:not(.timer-count-left) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.country-find,
+.score,
+.guesses-left,
+.highscore {
+  text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  height: 80%;
+}
+
+.game-details div i {
+  font-size: 1.6rem;
+  margin-right: 4px;
+  margin-bottom: 1px;
+}
+
+.buttons-container {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 15px;
+}
+
+.game-detail-buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+.countdown-sec {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2.3rem;
+}
+
+.buttons-container button {
+  width: 40px;
+  height: 40px;
+  border-radius: 0;
+  z-index: 0;
+  box-shadow: 4px 4px 10px 0 rgba(0, 0, 0, 0.5);
+}
+
+.buttons-container button i {
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  font-size: 1.7rem;
+}
+
+.buttons-container .game-detail-buttons button:first-of-type {
+  border-top-right-radius: 25px;
+  border-top-left-radius: 25px;
+}
+
+.buttons-container .game-detail-buttons button:last-of-type {
+  border-bottom-right-radius: 25px;
+  border-bottom-left-radius: 25px;
+}
+
+/* Tooltips */
+.tooltip-text {
+  color: var(--black-color);
+  position: fixed;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translate(100%, 5%);
+  top: 5%;
+  left: 100%;
+  min-width: 110px;
+  font-size: 1.3rem;
+  padding: 8px 10px;
+  text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+  text-transform: capitalize;
+  transition: all 0.3s var(--ease-in-out);
+  opacity: 0;
+  transform: translateX(-10px);
+  pointer-events: none;
+}
+
+.tooltip-text::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--white-color);
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  z-index: -1;
+  opacity: 0.9;
+}
+
+.tooltip-text::after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid var(--white-color);
+  top: 10px;
+  left: -13px;
+  transform: rotate(-90deg);
+  z-index: -2;
+  opacity: 0.9;
+}
+
+.buttons-container button:hover .tooltip-text {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.buttons-container button:hover {
+  z-index: 99999;
+}
+
+/* Collapse button */
+.buttons-container .collapse-btn {
+  display: none;
+}

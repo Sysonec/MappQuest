@@ -1,0 +1,324 @@
+/* Roboto Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+
+/* Reset styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+button,
+input,
+.popup-custom .leaflet-popup-content-wrapper,
+html,
+.leaflet-tooltip-left {
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+  letter-spacing: 0.5px;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+/* ! IMPORTANT it is not advisable to remove it due to accessibility concers */
+/* button:focus {
+  outline: none !important;
+}
+
+Accessibility concerns
+Assigning outline a value of 0 or none will remove the browser's default focus style. If an element can be interacted with, it must have a visible focus indicator. Provide obvious focus styling if the default focus style is removed.
+
+button {
+  outline: none !important;
+} */
+
+:root {
+  --orange-color-darker: rgb(230, 148, 77);
+  --orange-color-light: #f59f5b;
+  --white-color: #fff;
+  --black-color: #000;
+  --light-dark-color: #333;
+  --grey-color: #ccc;
+  --slider-gradient: linear-gradient(
+    to right,
+    var(--light-dark-color) 0%,
+    var(--light-dark-color) 50%,
+    var(--grey-color) 50%,
+    var(--grey-color) 100%
+  );
+  --warning-color: #e90000;
+  --cursor: pointer;
+  --ease-in-out: cubic-bezier(0, 0.26, 1, 0.82);
+  --ease: cubic-bezier(0, 0.42, 1, 0.7);
+}
+
+.hidden {
+  display: none;
+}
+
+.invisible {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#map {
+  background-color: #d5e8eb;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Helper class */
+.flex-centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.unclickable-flags {
+  pointer-events: none;
+}
+
+.unclickable > button:not(.settings-btn) {
+  pointer-events: none;
+}
+
+.unclickable > button:not(.settings-btn) {
+  background: var(--grey-color);
+  border-color: var(--grey-color);
+}
+
+.unclickable > button:not(.settings-btn) i {
+  color: var(--white-color);
+}
+
+.btn-off {
+  pointer-events: none;
+  background: var(--grey-color) !important;
+  border-color: var(--grey-color) !important;
+}
+
+.btn-off i {
+  color: var(--white-color) !important;
+}
+
+.collapse-btn i {
+  transition: transform 0.2s var(--ease-in-out);
+}
+
+.collapse-btn.collapse-on i {
+  transform: translate(-50%, -50%) rotate(180deg);
+}
+
+.buttons-container-on {
+  pointer-events: fill !important;
+}
+
+/* Correct guess popup */
+.popup-correct-info {
+  font-weight: bold;
+  color: var(--white-color);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  text-align: start;
+}
+
+.leaflet-popup-content .popup-correct-info p {
+  font-size: 1.4rem;
+  margin: 0.5rem;
+}
+
+.popup-correct-info span {
+  color: var(--light-dark-color);
+  font-size: 1.4rem;
+}
+
+.popup-correct-img {
+  width: 80px;
+  margin: auto;
+}
+
+/* Hard mode navbar flag */
+.hard-mode-flag {
+  width: 50px;
+  margin-left: 5px;
+}
+
+/* Custom popup */
+.popup-custom {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.leaflet-popup-content {
+  text-align: center;
+}
+
+.popup-custom .leaflet-popup-content-wrapper,
+.popup-custom .leaflet-popup-tip {
+  background-color: rgba(245, 159, 91, 0.89);
+  color: var(--light-dark-color);
+}
+
+.popup-custom .leaflet-popup-tip {
+  box-shadow: none;
+}
+
+.popup-custom .leaflet-popup-close-button span {
+  color: var(--black-color);
+  font-size: 1.9rem;
+}
+
+/* Leaflet custom zoom controls  */
+.zoom-controls {
+  transition: all 0.2s var(--ease-in-out);
+  position: fixed;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  z-index: 99999;
+  top: 15%;
+  transform: traslidernslateY(-15%);
+  left: 16px;
+}
+
+.zoom-controls button {
+  box-shadow: 4px 4px 6px 1px rgba(0, 0, 0, 0.4);
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  width: 40px;
+  height: 40px;
+}
+
+.zoom-controls button i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.8rem;
+}
+
+.zoom-controls button:first-of-type {
+  border-top-right-radius: 25px;
+  border-top-left-radius: 25px;
+}
+
+.zoom-controls button:last-of-type {
+  border-bottom-right-radius: 25px;
+  border-bottom-left-radius: 25px;
+}
+
+/* Loader */
+.loader-container {
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  background: var(--black-color);
+}
+
+.loader-video {
+  -webkit-filter: blur(6px);
+  filter: blur(6px);
+}
+
+/* Hide input number arrows/spinners */
+/* For chrome, Safari, Edge, Opera : */
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* For firefox : */
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+input[type='number'] {
+  outline: none;
+}
+
+/* Custom slider */
+input[type='range'] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  width: 13rem;
+  border-radius: 5px;
+  background: var(--slider-gradient);
+  outline: none;
+  transition: background 450ms var(--ease);
+}
+
+/* Chrome, Safari, Opera, and Edge Chromium */
+input[type='range']::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 5px;
+}
+
+/* Firefox */
+input[type='range']::-moz-range-track {
+  height: 4px;
+  border-radius: 5px;
+}
+
+/* Chrome */
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  margin-top: -6.5px;
+  background-color: var(--light-dark-color);
+  border: 5px solid var(--white-color);
+  height: 17px;
+  width: 17px;
+  border-radius: 50%;
+}
+
+/* Firefox */
+input[type='range']::-moz-range-thumb {
+  border: none; /*Removes extra border that FF applies*/
+  border-radius: 0; /*Removes default border-radius that FF applies*/
+  background-color: var(--light-dark-color);
+  border: 5px solid var(--white-color);
+  height: 17px;
+  width: 17px;
+  border-radius: 50%;
+}
+/* End of custom slider */
+
+.logo {
+  width: 300px;
+}
+
+p {
+  color: var(--white-color);
+  font-size: 1.7rem;
+  margin-bottom: 10px;
+}
+
+p:not(.text-task):first-line {
+  font-weight: 600;
+}
+
+i {
+  font-size: 2rem;
+  color: var(--white-color);
+}
+
+h2 {
+  margin-bottom: 15px;
+}

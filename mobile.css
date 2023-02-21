@@ -1,0 +1,1087 @@
+/* Mobile */
+@media only screen and (max-width: 1300px) {
+  /* Game navbar */
+  .game-details {
+    width: 85vw;
+  }
+
+  /* Settings modal */
+  .map-modal .map-modal-content .main-settings .leave-game-btn {
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    border-radius: 5px;
+  }
+
+  .map-modal .map-modal-content .main-settings .leave-game-btn i {
+    font-size: 1.9rem;
+  }
+
+  .close-modal i {
+    font-size: 1.6rem;
+  }
+
+  .switch-btn i {
+    font-size: 1.7rem;
+    margin-bottom: 3px;
+  }
+
+  .switch-btn-text {
+    font-size: 1.3rem;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  /* Game navbar */
+  .game .game-details {
+    width: 100%;
+  }
+
+  .game-details div::after {
+    content: '';
+    border-radius: 0;
+    border-left: 0;
+    border-right: 0;
+  }
+
+  /* Modal */
+  .map-modal {
+    width: 70%;
+  }
+}
+
+@media only screen and (max-width: 1150px) {
+  /* Guess flags game */
+  .guess-flags-game {
+    width: 100%;
+  }
+
+  .guess-flags-game .guess-flags .guess-flag-btn {
+    height: 30%;
+  }
+
+  /* Game navbar */
+  .game-details div {
+    font-size: 1.4rem;
+  }
+
+  .game-details div i {
+    font-size: 1.3rem;
+  }
+}
+
+@media only screen and (max-width: 900px) and (max-height: 1000px) {
+  /* Start game */
+  .start-game .start-game-content .start-game-btn,
+  .start-game .start-game-content .start-flags-game-btn {
+    font-size: 2rem;
+    width: 190px;
+    height: 50px;
+  }
+
+  .start-game h3 {
+    margin: 0;
+    margin-bottom: 10px;
+  }
+
+  .start-game .start-game-content > img {
+    margin-bottom: 10px;
+  }
+
+  .game-options > h2 {
+    font-size: 2rem;
+    margin-bottom: 0;
+  }
+
+  .start-game .game-options img {
+    margin-bottom: 10px;
+  }
+
+  .start-game .game-options button:not(.go-back-btn) {
+    font-size: 1.8rem;
+    width: 165px;
+    height: 48px;
+  }
+
+  .start-game .game-options {
+    text-align: center;
+  }
+
+  .game-options .go-back-btn i,
+  .guess-flags-game .go-back-btn i {
+    font-size: 3rem;
+    left: 30%;
+  }
+  .game-options .go-back-btn,
+  .guess-flags-game .go-back-btn {
+    width: 70px;
+    height: 50px;
+  }
+
+  /* Guess flags game */
+  .guess-flags-game {
+    width: 100%;
+  }
+
+  .guess-flags-game .guess-flags {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .guess-flags-game .find-flag-name {
+    position: absolute;
+    top: 20%;
+    transform: translateY(-20%);
+    font-size: 2.25rem;
+    margin-bottom: 15px;
+  }
+
+  .guess-flags-game .guess-flags .guess-flag-btn {
+    margin: 10px 20px;
+    height: 35%;
+  }
+
+  /* Game navbar */
+  .game-details div {
+    font-size: 1.5rem;
+  }
+
+  .game-details div i {
+    font-size: 1.4rem;
+  }
+
+  .game .buttons-container button {
+    width: 35px;
+    height: 40px;
+  }
+
+  /* Game btns */
+  .game-detail-buttons {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .buttons-container {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    pointer-events: none;
+  }
+
+  .buttons-container .game-detail-buttons button i {
+    font-size: 1.7rem;
+  }
+
+  .buttons-container .game-detail-buttons button:last-of-type {
+    border-radius: 0;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+  }
+
+  .buttons-container .game-detail-buttons button:first-of-type {
+    border-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .buttons-container .collapse-btn {
+    display: block;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    pointer-events: fill;
+  }
+
+  .mobile-collapse .collapse-btn i {
+    font-size: 1.8rem;
+  }
+
+  .game-detail-buttons {
+    opacity: 0;
+    transform: translateX(-400px);
+    transition: all 0.4s var(--ease-in-out);
+  }
+
+  /* Zoom btns */
+  .zoom-controls {
+    top: 30%;
+    left: 20px;
+  }
+
+  /* Mobile btns version */
+  .mobile-collapsed {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .buttons-container .collapse-on {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  /* Tooltips (game btns) */
+  .tooltip-text {
+    top: -120%;
+    left: -100%;
+  }
+
+  .tooltip-text::before {
+    content: '';
+    z-index: -1;
+    opacity: 0.9;
+  }
+
+  .tooltip-text::after {
+    content: '';
+    top: 31px;
+    left: 40%;
+    transform: rotate(180deg);
+  }
+
+  .buttons-container button:hover .tooltip-text {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+
+  /* Modal */
+  .map-modal {
+    width: 70%;
+  }
+
+  .map-modal .map-modal-content {
+    height: 170px;
+  }
+
+  .map-modal .map-modal-content .close-modal i {
+    font-size: 2rem;
+  }
+
+  .map-modal-content button .fa-thumbs-down,
+  .map-modal-content button .fa-thumbs-up {
+    font-size: 1.45rem;
+  }
+
+  .map-modal .map-modal-content button {
+    font-size: 1.6rem;
+    width: 100px;
+    height: 36px;
+  }
+
+  .map-modal .map-modal-content h3 {
+    font-size: 1.6rem;
+    margin: 5px 0;
+  }
+
+  .map-modal .map-modal-content p {
+    font-size: 1.6rem;
+  }
+
+  /* Marker modal */
+  .map-modal .map-modal-content .marker-btns .remove-markers-btn,
+  .map-modal .map-modal-content .marker-btns .add-marker-btn {
+    margin-top: 0;
+    width: 110px;
+  }
+
+  .map-modal .map-modal-content .marker-btns .remove-markers-btn {
+    width: 135px;
+  }
+
+  .map-modal .map-modal-content .marker-btns .remove-markers-btn i {
+    font-size: 1.3rem;
+    top: 5px;
+  }
+
+  .map-modal .map-modal-content .marker-btns .add-marker-btn i {
+    font-size: 1.45rem;
+  }
+
+  .map-modal .map-modal-content .marker-menu {
+    margin: 15px 0;
+  }
+
+  .map-modal .map-modal-content .marker-menu .marker-name {
+    font-size: 1.5rem;
+  }
+
+  .map-modal .map-modal-content .marker-menu label {
+    font-size: 1.5rem;
+  }
+
+  .marker-info {
+    font-size: 1.3rem;
+    top: 5px;
+  }
+
+  .marker-menu label,
+  .marker-menu .marker-name {
+    font-size: 1.5rem;
+    margin-right: 5px;
+  }
+
+  .marker-menu .add-marker-btn {
+    margin: 0;
+  }
+
+  /* Timer modal */
+  .input-timer .timer-min,
+  .input-timer .timer-sec {
+    width: 45px;
+    font-size: 1.6rem;
+    padding: 0;
+  }
+
+  .map-modal .map-modal-content .modal-timer-count button {
+    width: 110px;
+  }
+
+  .map-modal .map-modal-content .modal-timer-count button i {
+    font-size: 1.35rem;
+  }
+
+  .timer-warning {
+    width: 100%;
+    top: 24%;
+    left: 50%;
+    transform: translate(-50%, -24%);
+  }
+
+  /* Settings modal */
+  .settings-title {
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .main-settings {
+    margin-top: 30px;
+  }
+}
+
+@media only screen and (max-width: 800px) and (max-height: 799px) {
+  /* Start game content */
+  .start-game .start-game-content img,
+  .start-game .game-options img {
+    width: 200px;
+  }
+  .start-game .start-game-content h2 {
+    font-size: 2.1rem;
+  }
+
+  .start-game .start-game-content h3,
+  .start-game .game-options h3 {
+    font-size: 1.9rem;
+  }
+
+  .start-game-content > h3 {
+    margin: 0.4rem 0;
+  }
+
+  .start-game-content > h2 {
+    margin: 5px 0;
+  }
+
+  .start-game .start-game-content .start-game-btn,
+  .start-game .start-game-content .start-flags-game-btn,
+  .start-game .game-options button:not(.go-back-btn) {
+    font-size: 1.9rem;
+    width: 180px;
+    height: 50px;
+  }
+
+  /* Guess flags game */
+  .guess-flags-game .guess-flags .guess-flag-btn {
+    height: 30%;
+  }
+
+  /* Game navbar */
+  .timer-count span {
+    top: 47px;
+  }
+  .game-details {
+    width: 100%;
+    height: 57px;
+  }
+
+  .game-details div::after {
+    content: '';
+    border-radius: 0;
+    border-left: 0;
+    border-right: 0;
+  }
+
+  .game-details div {
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  .game-details div i {
+    font-size: 1.4rem;
+  }
+
+  /* Logo */
+  .logo-details {
+    margin: 0;
+  }
+
+  /* Zoom btns */
+  .game .zoom-controls {
+    width: 100%;
+    top: 30%;
+    transform: translateX(calc(100% - 60px));
+    left: 15px;
+  }
+
+  .zoom-controls button {
+    width: 38px;
+    height: 38px;
+  }
+
+  .game .buttons-container button {
+    width: 35px;
+    height: 40px;
+  }
+
+  /* General modal styling */
+  .map-modal .map-modal-content button i:not(.fa-thumbs-down, .fa-thumbs-up),
+  .map-modal .map-modal-content .modal-timer-count button i {
+    top: 4px;
+    left: 5px;
+    font-size: 1.4rem;
+  }
+
+  .map-modal .map-modal-content {
+    padding: 2rem;
+    height: 165px;
+  }
+
+  .map-modal-content button .fa-thumbs-down,
+  .map-modal-content button .fa-thumbs-up {
+    font-size: 1.3rem;
+    top: 10px;
+    left: 8px;
+  }
+
+  .map-modal .map-modal-content button {
+    font-size: 1.4rem;
+    width: 90px;
+    height: 32px;
+  }
+
+  .map-modal .map-modal-content h3 {
+    font-size: 1.6rem;
+  }
+
+  .map-modal .map-modal-content p {
+    font-size: 1.5rem;
+  }
+
+  .map-modal .map-modal-content h3 {
+    margin: 0;
+  }
+
+  /* Marker modal */
+  .map-modal .map-modal-content .marker-btns .remove-markers-btn,
+  .map-modal .map-modal-content .marker-btns .add-marker-btn {
+    margin-top: 0;
+    width: 100px;
+  }
+
+  .map-modal .map-modal-content .marker-btns .remove-markers-btn {
+    width: 120px;
+  }
+
+  .map-modal .map-modal-content .marker-btns .remove-markers-btn i {
+    font-size: 1.2rem;
+    top: 5px;
+  }
+
+  .map-modal .map-modal-content .marker-menu {
+    margin: 15px 0;
+  }
+
+  .map-modal .map-modal-content .marker-menu .marker-name {
+    padding: 3px 10px;
+    height: 30px;
+    font-size: 1.4rem;
+  }
+
+  .map-modal .map-modal-content .marker-menu label {
+    font-size: 1.4rem;
+  }
+
+  .marker-info {
+    font-size: 1.3rem;
+    top: 5px;
+  }
+
+  .marker-menu label,
+  .marker-menu .marker-name {
+    font-size: 1.5rem;
+    margin-right: 5px;
+  }
+
+  .marker-menu .add-marker-btn {
+    margin: 0;
+  }
+
+  /* Timer modal */
+  .input-timer {
+    margin: 16px 0px;
+  }
+
+  .input-timer .timer-min,
+  .input-timer .timer-sec {
+    width: 45px;
+    font-size: 1.5rem;
+    padding: 0;
+  }
+
+  .map-modal .map-modal-content .modal-timer-count button {
+    width: 100px;
+  }
+
+  .map-modal .map-modal-content .modal-timer-count button i {
+    font-size: 1.2rem;
+    top: 5px;
+  }
+
+  .timer-warning {
+    width: 100%;
+    top: 23%;
+    left: 50%;
+    transform: translate(-50%, -23%);
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .start-game .start-game-content img,
+  .start-game .game-options img {
+    width: 200px;
+  }
+
+  .start-game .start-game-content h2 {
+    font-size: 1.8rem;
+  }
+
+  .start-game-content h3 {
+    padding: 10px;
+  }
+
+  .start-game .start-game-content h3,
+  .start-game .game-options h3 {
+    font-size: 1.7rem;
+    text-align: center;
+  }
+
+  .start-game .start-game-content .start-game-btn,
+  .start-game .start-game-content .start-flags-game-btn {
+    font-size: 1.6rem;
+    width: 150px;
+    height: 45px;
+  }
+
+  .start-game .start-game-content .start-game-btn i {
+    font-size: 1.9rem;
+  }
+
+  .start-game .start-game-content .start-flags-game-btn i {
+    font-size: 1.7rem;
+  }
+
+  .logo-details {
+    width: 90px;
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* Guess flags game */
+  .guess-flags-game .find-flag-name {
+    position: absolute;
+    top: 15%;
+    transform: translateY(-15%);
+  }
+
+  .guess-flags-game .guess-flags {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .guess-flags-game .find-flag-name {
+    font-size: 2rem;
+    margin-bottom: 15px;
+  }
+
+  .guess-flags-game .guess-flags .guess-flag-btn {
+    margin: 10px 5px;
+    height: 15%;
+  }
+
+  /* Game navbar */
+  .game-details {
+    position: relative;
+    width: 100%;
+    left: 0;
+    transform: translateX(0);
+    height: 55px;
+  }
+
+  .game-details div::after {
+    content: '';
+    border-radius: 0;
+    border-left: 0;
+    border-right: 0;
+    opacity: 0.9;
+    box-shadow: none;
+  }
+
+  .game .game-details .country-find,
+  .game .game-details .guesses-left {
+    border-right: 0;
+    box-shadow: 1px 3px 6px rgba(0, 0, 0, 0.35);
+  }
+
+  .game-details div:last-of-type {
+    border-left: 0;
+  }
+
+  .timer-count span {
+    top: 100px;
+  }
+
+  .game .game-details .timer-count {
+    border: 0;
+  }
+
+  .game-details div {
+    font-size: 1.42rem;
+    margin: 0;
+    padding: 6px;
+  }
+
+  .game-details div:nth-child(odd) {
+    border: 0;
+  }
+
+  .game-details div:nth-child(2) {
+    position: absolute;
+    top: 55px;
+  }
+
+  .game-details div:nth-child(2)::after,
+  .game-details div:nth-child(4)::after {
+    content: '';
+    opacity: 0.96;
+  }
+
+  .game-details div:nth-child(2),
+  .game-details div:nth-child(4) {
+    position: absolute;
+    top: 55px;
+    height: 100%;
+  }
+
+  .game-details div:nth-child(4) {
+    left: 0;
+    width: 50%;
+    border-right: 1px solid var(--white-color);
+  }
+
+  .game-details div:nth-child(2) {
+    right: 0;
+    width: 50%;
+    border-left: 1px solid var(--white-color);
+  }
+
+  .game-details div i {
+    font-size: 1.2rem;
+  }
+
+  /* Zoom btns */
+  .game .zoom-controls {
+    width: 100%;
+    top: 20%;
+    transform: translateX(calc(100% - 60px));
+    left: 12px;
+  }
+
+  /* .zoom-controls button {
+    width: 40px;
+    height: 40px;
+  } */
+
+  /* General modal styling */
+  .map-modal {
+    width: 100%;
+  }
+
+  .map-modal .map-modal-content {
+    justify-content: center;
+    border-width: 1px;
+    border-radius: 0;
+    border-left: 0;
+    border-right: 0;
+    height: 190px;
+  }
+
+  .map-modal .map-modal-content h3 {
+    margin: 10px 0;
+  }
+
+  .map-modal .map-modal-content p {
+    font-size: 1.5rem;
+  }
+
+  .modal-acquired-score {
+    font-size: 1.3rem;
+  }
+
+  .map-modal-content button {
+    font-size: 1.2rem;
+    margin: 5px 8px;
+    width: 80px;
+    height: 30px;
+    padding: 0;
+  }
+
+  .map-modal-content button i,
+  .map-modal .map-modal-content .modal-timer-count button i {
+    top: 2px;
+    left: 5px;
+    font-size: 1.4rem;
+  }
+
+  /* Play again */
+  #play-again {
+    font-size: 1.4rem;
+    height: 38px;
+  }
+
+  #play-again i {
+    font-size: 1.5rem;
+  }
+
+  /* Timer modal */
+  .map-modal .map-modal-content .modal-timer-count button {
+    width: 90px;
+    margin: 5px 5px;
+  }
+
+  .map-modal .map-modal-content .modal-timer-count .input-timer {
+    margin: 15px 0;
+  }
+
+  .map-modal .map-modal-content .timer-warning {
+    margin-top: 0;
+    font-size: 1.2rem;
+  }
+
+  .timer-warning {
+    width: 100%;
+    top: 29%;
+    left: 50%;
+    transform: translate(-50%, -29%);
+  }
+
+  /* Marker modal */
+  .map-modal .map-modal-content .marker-info {
+    font-size: 1.5rem;
+    margin: 0;
+    margin-top: 5px;
+  }
+
+  /* Settings modal */
+  .switch-btn {
+    width: 90px;
+  }
+}
+
+@media only screen and (max-width: 340px) {
+  /* Start game */
+  .start-game .start-game-content .start-game-btn {
+    margin-bottom: 15px;
+  }
+
+  .game-options .go-back-btn i,
+  .guess-flags-game .go-back-btn i {
+    font-size: 2.7rem;
+    left: 30%;
+    top: 45%;
+  }
+  .game-options .go-back-btn,
+  .guess-flags-game .go-back-btn {
+    width: 60px;
+    height: 50px;
+  }
+
+  /* Game details */
+  .logo-details {
+    width: 80px;
+    left: 50%;
+  }
+
+  .game .game-details div {
+    padding: 0;
+    font-size: 1.3rem;
+  }
+
+  .game .buttons-container button {
+    width: 10px;
+    height: 40px;
+  }
+
+  .mobile-collapsed {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .game .buttons-container button {
+    width: 25px;
+    padding: 15px 15px;
+    height: 25px;
+    margin: 0;
+  }
+
+  .game .buttons-container button i {
+    font-size: 1.4rem;
+  }
+
+  /* Timer */
+  .timer-count span {
+    font-size: 1.6rem;
+  }
+
+  /* Zoom btns */
+  .zoom-controls button {
+    width: 33px;
+    height: 33px;
+  }
+
+  .zoom-controls button i {
+    font-size: 1.5rem;
+  }
+
+  /* Tooltips (game btns) */
+  .tooltip-text {
+    top: -145%;
+    left: -95%;
+    min-width: 80px;
+    font-size: 1.2rem;
+  }
+
+  .tooltip-text::after {
+    content: '';
+    top: 30px;
+    left: 40%;
+  }
+
+  .buttons-container button:hover .tooltip-text {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+
+  /* Modal */
+  .map-modal .map-modal-content h3 {
+    font-size: 1.5rem;
+    margin: 5px 0;
+    width: 100%;
+  }
+
+  .map-modal .map-modal-content p {
+    font-size: 1.5rem;
+  }
+
+  .map-modal .map-modal-content .close-modal i {
+    font-size: 1.7rem;
+  }
+
+  /* Marker modal */
+  .map-modal .map-modal-content .marker-btns .remove-markers-btn,
+  .map-modal .map-modal-content .marker-btns .add-marker-btn {
+    margin-top: 0;
+    width: 85px;
+  }
+
+  .map-modal .map-modal-content .marker-btns .remove-markers-btn {
+    width: 110px;
+  }
+
+  .map-modal .map-modal-content .marker-btns .remove-markers-btn i {
+    font-size: 1.1rem;
+  }
+
+  .map-modal .map-modal-content .marker-menu label {
+    font-size: 1.3rem;
+  }
+
+  .map-modal .map-modal-content .marker-info {
+    font-size: 1.2rem;
+  }
+
+  .map-modal .map-modal-content .marker-menu .marker-name {
+    font-size: 1.3rem;
+  }
+
+  /* Timer modal */
+  .input-timer .timer-min,
+  .input-timer .timer-sec {
+    width: 40px;
+    font-size: 1.5rem;
+    padding: 0;
+  }
+
+  .timer-warning {
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -25%);
+  }
+
+  .map-modal .map-modal-content .modal-timer-count button {
+    width: 67px;
+    height: 27px;
+  }
+
+  .map-modal .map-modal-content .modal-timer-count button i {
+    font-size: 1rem;
+    top: 1px;
+    left: 4px;
+  }
+
+  .input-timer {
+    font-size: 1.3rem;
+    margin: 20px 0;
+  }
+
+  /* Settings modal */
+  .main-settings .audio-controls .audio-slider input {
+    height: 8px;
+    width: 90px;
+  }
+
+  .switch-btn {
+    width: 70px;
+  }
+
+  .switch-btn i {
+    font-size: 1.3rem;
+  }
+
+  .switch-btn-text {
+    font-size: 1.2rem;
+  }
+
+  .main-settings .audio-controls .audio-slider .audio-slider-text {
+    font-size: 1.3rem;
+  }
+
+  .main-settings .audio-controls .audio-slider i {
+    font-size: 1.3rem;
+  }
+
+  .map-modal .map-modal-content .main-settings .leave-game-btn i {
+    font-size: 1.7rem;
+  }
+}
+
+@media only screen and (max-height: 600px) {
+  .zoom-controls {
+    width: 100%;
+    top: 20%;
+    transform: translateX(calc(100% - 65px));
+  }
+}
+
+@media only screen and (max-height: 400px) {
+  .logo-details {
+    width: 90px;
+  }
+
+  /* .buttons-container {
+    top: 55%;
+  } */
+  .buttons-container button {
+    width: 35px;
+    height: 35px;
+  }
+
+  .buttons-container button i {
+    font-size: 1.5rem;
+  }
+
+  .map-modal {
+    width: 100%;
+  }
+
+  .map-modal .map-modal-content {
+    justify-content: flex-start;
+    border-width: 1px;
+    border-radius: 0;
+    border-left: 0;
+    border-right: 0;
+  }
+
+  .map-modal-content p {
+    font-size: 1.3rem;
+  }
+
+  .modal-acquired-score {
+    font-size: 1.3rem;
+  }
+
+  .map-modal-content button {
+    font-size: 1.2rem;
+    margin: 5px 8px;
+    width: 80px;
+    height: 30px;
+    padding: 0;
+  }
+
+  .map-modal-content button i {
+    font-size: 1.3rem;
+  }
+}
+
+@media only screen and (max-height: 300px) {
+  /* Start game options */
+  .start-game .game-options button {
+    font-size: 1.7rem;
+    width: 160px;
+    height: 50px;
+  }
+
+  .logo-details {
+    width: 85px;
+  }
+
+  /* Navbar */
+  .game-details {
+    height: 55px;
+  }
+
+  /* Game buttons and zoom controls */
+  .game .buttons-container button {
+    width: 33px;
+  }
+
+  .game .buttons-container button i {
+    font-size: 1.7rem;
+  }
+
+  .zoom-controls button {
+    width: 35px;
+    height: 35px;
+  }
+}

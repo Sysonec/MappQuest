@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Icons -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./media/icons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./media/icons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./media/icons/favicon-16x16.png"
+    />
+    <link rel="manifest" href="./media/icons/site.webmanifest" />
+    <link
+      rel="mask-icon"
+      href="./media/icons/safari-pinned-tab.svg"
+      color="#f59f5b"
+    />
+    <meta name="msapplication-TileColor" content="#f59f5b" />
+    <meta name="theme-color" content="#f59f5b" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="utility.css" />
+    <link rel="stylesheet" href="mobile.css" />
+
+    <!-- Leaflet -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+      integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+      crossorigin=""
+    />
+    <script
+      defer
+      src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+      integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+      crossorigin=""
+    ></script>
+
+    <!-- Font Awesome -->
+    <script
+      defer
+      src="https://kit.fontawesome.com/28f02df3f2.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Scripts -->
+    <script type="module" defer src="script.js"></script>
+    <title>MappQuest</title>
+  </head>
+  <body>
+    <!-- Loader -->
+    <div class="loader-container hidden">
+      <video
+        src="./media/video/clouds.mp4"
+        class="loader-video"
+        id="loader"
+        muted="true"
+        autoplay="true"
+        loop="true"
+      ></video>
+    </div>
+    <!-- Start Game Overlay -->
+    <div class="start-game">
+      <div class="start-game-content">
+        <img src="./media/images/logo.png" alt="logo-png" />
+        <h2>Explore the countries around you!</h2>
+        <h3>An interactive way to exercise your map knowledge</h3>
+        <div class="start-game-btns">
+          <button class="start-game-btn fill-btn" id="start-game">
+            Play now
+            <i class="fa-solid fa-earth-americas"></i>
+          </button>
+          <button class="start-flags-game-btn fill-btn" id="start-flags-game">
+            Guess flags
+            <i class="fa-solid fa-flag"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="guess-flags-game hidden">
+        <button class="go-back-btn fill-btn">
+          <i class="fa-solid fa-tent-arrow-turn-left"></i>
+        </button>
+        <p class="find-flag-name"></p>
+        <div class="guess-flags"></div>
+      </div>
+
+      <div class="game-options hidden">
+        <button class="go-back-btn fill-btn">
+          <i class="fa-solid fa-tent-arrow-turn-left"></i>
+        </button>
+        <img src="./media/images/logo.png" alt="logo-png" />
+        <h2>Choose the difficulty!</h2>
+        <div class="game-options-btns">
+          <button class="easy-mode-btn fill-btn">
+            <i class="fa-solid fa-face-smile-beam"></i> Easy
+          </button>
+          <button class="medium-mode-btn fill-btn">
+            <i class="fa-solid fa-face-grin-beam-sweat"></i> Medium
+          </button>
+          <button class="hard-mode-btn fill-btn">
+            <i class="fa-solid fa-face-flushed"></i> Hard
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Game container -->
+    <div class="game-container hidden">
+      <div class="game">
+        <!-- Game details -->
+        <div class="game-details">
+          <!-- Logo -->
+          <img
+            src="./media/images/logo-dark.png"
+            alt="logo"
+            class="logo-details"
+          />
+
+          <!-- Find country -->
+          <div class="country-find flex-centered" id="game-country-find">
+            <span>
+              <i class="fa-solid fa-magnifying-glass-location"></i> Find:
+              <span id="find-country-name"></span>
+            </span>
+          </div>
+
+          <!-- Timer -->
+          <div class="timer-count">
+            <span class="timer-count-left hidden"> </span>
+          </div>
+
+          <!-- Guesses left -->
+          <div class="guesses-left flex-centered" id="game-guesses-left">
+            <span
+              ><i class="fa-solid fa-dice"></i> Guesses:
+              <span id="guesses-num"></span
+            ></span>
+          </div>
+
+          <!-- Score -->
+          <div class="score flex-centered" id="game-score">
+            <span
+              ><i class="fa-solid fa-fire"></i> Score:
+              <span id="score-num"></span
+            ></span>
+          </div>
+
+          <!-- Highscore -->
+          <div class="highscore flex-centered" id="game-highscore">
+            <span>
+              <i class="fa-solid fa-crown"></i> Highest:
+              <span id="highscore-num"></span
+            ></span>
+          </div>
+        </div>
+
+        <!-- Modal reveal country -->
+        <div class="map-modal" id="map-modal"></div>
+
+        <!-- Custom zoom controls -->
+        <div class="zoom-controls">
+          <button class="zoom-in-btn fill-btn" id="zoom-in">
+            <i class="fa-solid fa-plus"></i>
+          </button>
+          <button class="zoom-out-btn fill-btn" id="zoom-out">
+            <i class="fa-solid fa-minus"></i>
+          </button>
+        </div>
+
+        <!-- <div class="saved-time-el">
+          <button class="save-time fill-btn">
+          <i class="fa-solid fa-circle-check"></i> Save
+          </button>
+          <span class="curr-saved-time"></span>
+          <button class="run-saved-time fill-btn">
+          <i class="fa-solid fa-circle-check"></i> Start
+          </button>
+          <button class="start-timer fill-btn">
+            <i class="fa-solid fa-clock"></i> Start
+          </button>
+          </div> -->
+
+        <!--  Buttons -->
+        <div class="buttons-container">
+          <!-- Custom zoom controls -->
+          <!-- <div class="zoom-controls">
+            <button class="zoom-in-btn fill-btn" id="zoom-in">
+              <i class="fa-solid fa-plus"></i>
+              <span class="tooltip-text">Zoom in</span>
+            </button>
+            <button class="zoom-out-btn fill-btn" id="zoom-out">
+              <i class="fa-solid fa-minus"></i>
+              <span class="tooltip-text">Zoom out</span>
+            </button>
+          </div> -->
+
+          <!-- Mobile collapse buttons -->
+          <div class="mobile-collapse">
+            <button class="collapse-btn fill-btn">
+              <i class="fa-solid fa-arrow-right-long"></i>
+            </button>
+          </div>
+
+          <!-- Game action buttons -->
+          <div class="game-detail-buttons">
+            <!-- Center position -->
+            <button class="est-position-btn fill-btn">
+              <i class="fa-solid fa-magnifying-glass-location"></i>
+              <span class="tooltip-text">Est. position</span>
+            </button>
+
+            <!-- Find country button -->
+            <button
+              class="find-country-btn fill-btn"
+              data-modal="countryFindModal"
+            >
+              <i class="fa-solid fa-route"></i>
+              <span class="tooltip-text">Find country</span>
+            </button>
+
+            <!-- Set marker -->
+            <button class="marker-btn fill-btn" data-modal="markerModal">
+              <i class="fa-solid fa-location-dot"></i>
+              <span class="tooltip-text">Set marker</span>
+            </button>
+
+            <!-- Set timer -->
+            <button class="timer-btn fill-btn" data-modal="timerModal">
+              <i class="fa-solid fa-stopwatch"></i>
+              <span class="tooltip-text">Set timer</span>
+            </button>
+
+            <!-- Show map clue -->
+            <button class="map-clue-btn fill-btn">
+              <i class="fa-solid fa-eye"></i>
+              <span class="tooltip-text">Reveal map</span>
+            </button>
+
+            <!-- Quit game -->
+            <!-- <button class="quit-game-btn fill-btn">
+              <i class="fa-solid fa-power-off"></i>
+              <span class="tooltip-text">Quit</span>
+            </button> -->
+
+            <!-- Settings -->
+            <button class="settings-btn fill-btn" data-modal="settingsModal">
+              <i class="fa-solid fa-gear"></i>
+              <span class="tooltip-text">Settings</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Leaflet Map -->
+        <div id="map"></div>
+      </div>
+    </div>
+  </body>
+</html>

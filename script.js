@@ -810,8 +810,12 @@ class GameState extends ToMapp {
     const fullScreenChecked = Boolean(document.fullscreenElement);
 
     // Check zoom controls switch
-    const zoomControlsOn =
-      JSON.parse(window.localStorage.getItem('zoomControlsVisible')) || true;
+    const zoomControlsOn = JSON.parse(
+      window.localStorage.getItem('zoomControlsVisible')
+    );
+    if (zoomControlsOn === undefined) {
+      zoomControlsOn = false;
+    }
 
     // Check country trivia switch
     const countryTriviaOn =

@@ -48,6 +48,11 @@ body {
   --ease: cubic-bezier(0, 0.42, 1, 0.7);
 }
 
+/* Hide chromecast icon on game load */
+.cast-icon-container {
+  display: none !important;
+}
+
 .hidden {
   display: none;
 }
@@ -211,17 +216,28 @@ body {
 
 /* Loader */
 .loader-container {
-  overflow: hidden;
-  height: 100vh;
-  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
   background: var(--black-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .loader-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
   -webkit-filter: blur(6px);
   filter: blur(6px);
 }
-
 /* Hide input number arrows/spinners */
 /* For chrome, Safari, Edge, Opera : */
 input[type='number']::-webkit-outer-spin-button,

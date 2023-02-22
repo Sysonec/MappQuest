@@ -71,6 +71,11 @@
   .game-details div i {
     font-size: 1.3rem;
   }
+
+  /* Overlay should not be applied on mobiles */
+  .guess-flags-game .guess-flags .guess-flag-btn:hover::before {
+    opacity: 0;
+  }
 }
 
 @media only screen and (max-width: 900px) and (max-height: 1000px) {

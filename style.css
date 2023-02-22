@@ -757,19 +757,23 @@
   border-bottom: 2px solid var(--white-color);
 }
 
-.timer-min::-webkit-input-placeholder, .timer-sec::-webkit-input-placeholder {
+.timer-min::-webkit-input-placeholder,
+.timer-sec::-webkit-input-placeholder {
   color: var(--grey-color);
 }
 
-.timer-min::-moz-placeholder, .timer-sec::-moz-placeholder {
+.timer-min::-moz-placeholder,
+.timer-sec::-moz-placeholder {
   color: var(--grey-color);
 }
 
-.timer-min:-ms-input-placeholder, .timer-sec:-ms-input-placeholder {
+.timer-min:-ms-input-placeholder,
+.timer-sec:-ms-input-placeholder {
   color: var(--grey-color);
 }
 
-.timer-min::-ms-input-placeholder, .timer-sec::-ms-input-placeholder {
+.timer-min::-ms-input-placeholder,
+.timer-sec::-ms-input-placeholder {
   color: var(--grey-color);
 }
 

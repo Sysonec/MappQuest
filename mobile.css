@@ -65,11 +65,11 @@
 
   /* Game navbar */
   .game-details div {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
   }
 
   .game-details div i {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
   }
 
   /* Overlay should not be applied on mobiles */
@@ -430,7 +430,7 @@
   }
 
   .game-details div i {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
   }
 
   /* Logo */
@@ -676,7 +676,7 @@
   }
 
   .game-details div {
-    font-size: 1.42rem;
+    font-size: 1.5rem;
     margin: 0;
     padding: 6px;
   }
@@ -716,7 +716,7 @@
   }
 
   .game-details div i {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
   }
 
   /* Zoom btns */

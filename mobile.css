@@ -160,11 +160,6 @@
     font-size: 1.4rem;
   }
 
-  .game .buttons-container button {
-    width: 35px;
-    height: 40px;
-  }
-
   /* Game btns */
   .game-detail-buttons {
     display: flex;
@@ -181,7 +176,12 @@
   }
 
   .buttons-container .game-detail-buttons button i {
-    font-size: 1.7rem;
+    font-size: 1.8rem;
+  }
+
+  .buttons-container .game-detail-buttons button {
+    width: 40px;
+    height: 40px;
   }
 
   .buttons-container .game-detail-buttons button:last-of-type {
@@ -447,12 +447,16 @@
   }
 
   .zoom-controls button {
-    width: 38px;
-    height: 38px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .zoom-controls button i {
+    font-size: 1.9rem;
   }
 
   .game .buttons-container button {
-    width: 35px;
+    width: 40px;
     height: 40px;
   }
 
@@ -722,11 +726,6 @@
     transform: translateX(calc(100% - 60px));
     left: 12px;
   }
-
-  /* .zoom-controls button {
-    width: 40px;
-    height: 40px;
-  } */
 
   /* General modal styling */
   .map-modal {

@@ -36,9 +36,9 @@
     <meta name="theme-color" content="#f59f5b" />
 
     <!-- CSS -->
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="utility.css" />
-    <link rel="stylesheet" href="mobile.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/utility.css" />
+    <link rel="stylesheet" href="css/mobile.css" />
 
     <!-- Leaflet -->
     <link
@@ -61,7 +61,7 @@
       crossorigin="anonymous"
     ></script>
     <!-- Scripts -->
-    <script type="module" defer src="script.js"></script>
+    <script defer src="script.js"></script>
     <title>MappQuest</title>
   </head>
   <body>
@@ -185,33 +185,8 @@
           </button>
         </div>
 
-        <!-- <div class="saved-time-el">
-          <button class="save-time fill-btn">
-          <i class="fa-solid fa-circle-check"></i> Save
-          </button>
-          <span class="curr-saved-time"></span>
-          <button class="run-saved-time fill-btn">
-          <i class="fa-solid fa-circle-check"></i> Start
-          </button>
-          <button class="start-timer fill-btn">
-            <i class="fa-solid fa-clock"></i> Start
-          </button>
-          </div> -->
-
         <!--  Buttons -->
         <div class="buttons-container">
-          <!-- Custom zoom controls -->
-          <!-- <div class="zoom-controls">
-            <button class="zoom-in-btn fill-btn" id="zoom-in">
-              <i class="fa-solid fa-plus"></i>
-              <span class="tooltip-text">Zoom in</span>
-            </button>
-            <button class="zoom-out-btn fill-btn" id="zoom-out">
-              <i class="fa-solid fa-minus"></i>
-              <span class="tooltip-text">Zoom out</span>
-            </button>
-          </div> -->
-
           <!-- Mobile collapse buttons -->
           <div class="mobile-collapse">
             <button class="collapse-btn fill-btn">
@@ -253,12 +228,6 @@
               <i class="fa-solid fa-eye"></i>
               <span class="tooltip-text">Reveal map</span>
             </button>
-
-            <!-- Quit game -->
-            <!-- <button class="quit-game-btn fill-btn">
-              <i class="fa-solid fa-power-off"></i>
-              <span class="tooltip-text">Quit</span>
-            </button> -->
 
             <!-- Settings -->
             <button class="settings-btn fill-btn" data-modal="settingsModal">

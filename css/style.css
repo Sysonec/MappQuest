@@ -82,7 +82,7 @@
   -webkit-filter: blur(2px);
   filter: blur(2px);
   opacity: 0.4;
-  background: url('./media/images/glow.jpg') no-repeat center/cover;
+  background: url('../media/images/glow.jpg') no-repeat center/cover;
 }
 
 /* Guess flags minigame */
@@ -755,6 +755,46 @@
   padding: 5px 10px;
   border: 0;
   border-bottom: 2px solid var(--white-color);
+}
+
+.timer-min::-webkit-input-placeholder,
+.timer-sec::-webkit-input-placeholder {
+  color: var(--grey-color);
+}
+
+.timer-min::-moz-placeholder,
+.timer-sec::-moz-placeholder {
+  color: var(--grey-color);
+}
+
+.timer-min:-ms-input-placeholder,
+.timer-sec:-ms-input-placeholder {
+  color: var(--grey-color);
+}
+
+.timer-min::-ms-input-placeholder,
+.timer-sec::-ms-input-placeholder {
+  color: var(--grey-color);
+}
+
+.timer-min::-webkit-input-placeholder,
+.timer-sec::-webkit-input-placeholder {
+  color: var(--grey-color);
+}
+
+.timer-min::-moz-placeholder,
+.timer-sec::-moz-placeholder {
+  color: var(--grey-color);
+}
+
+.timer-min:-ms-input-placeholder,
+.timer-sec:-ms-input-placeholder {
+  color: var(--grey-color);
+}
+
+.timer-min::-ms-input-placeholder,
+.timer-sec::-ms-input-placeholder {
+  color: var(--grey-color);
 }
 
 .timer-min::-webkit-input-placeholder,

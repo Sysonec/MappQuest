@@ -41,7 +41,7 @@
   }
 
   .game-details div::after {
-    content: '';
+    content: "";
     border-radius: 0;
     border-left: 0;
     border-right: 0;
@@ -70,11 +70,6 @@
 
   .game-details div i {
     font-size: 1.4rem;
-  }
-
-  /* Overlay should not be applied on mobiles */
-  .guess-flags-game .guess-flags .guess-flag-btn:hover::before {
-    opacity: 0;
   }
 }
 
@@ -237,13 +232,13 @@
   }
 
   .tooltip-text::before {
-    content: '';
+    content: "";
     z-index: -1;
     opacity: 0.9;
   }
 
   .tooltip-text::after {
-    content: '';
+    content: "";
     top: 31px;
     left: 40%;
     transform: rotate(180deg);
@@ -416,7 +411,7 @@
   }
 
   .game-details div::after {
-    content: '';
+    content: "";
     border-radius: 0;
     border-left: 0;
     border-right: 0;
@@ -649,7 +644,7 @@
   }
 
   .game-details div::after {
-    content: '';
+    content: "";
     border-radius: 0;
     border-left: 0;
     border-right: 0;
@@ -692,7 +687,7 @@
 
   .game-details div:nth-child(2)::after,
   .game-details div:nth-child(4)::after {
-    content: '';
+    content: "";
     opacity: 0.96;
   }
 
@@ -894,7 +889,7 @@
   }
 
   .tooltip-text::after {
-    content: '';
+    content: "";
     top: 30px;
     left: 40%;
   }

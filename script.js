@@ -1,49 +1,49 @@
-'use strict';
+"use strict";
 
 let dataCountries;
 let antarctica;
 
 // Import Antarctica as a standalone polygon
-fetch('./antarctica.geo.json')
-  .then(response => response.json())
-  .then(data => {
+fetch("./antarctica.geo.json")
+  .then((response) => response.json())
+  .then((data) => {
     // use the parsed JSON data here
     antarctica = data;
   })
-  .catch(error => {
-    console.error('Error loading JSON file:', error);
+  .catch((error) => {
+    console.error("Error loading JSON file:", error);
   });
 
 // Import countries from dataCountries
-fetch('./custom.geo.json')
-  .then(response => response.json())
-  .then(data => {
+fetch("./custom.geo.json")
+  .then((response) => response.json())
+  .then((data) => {
     // use the parsed JSON data here
     dataCountries = data;
 
     // DOM elements
-    const gameMain = document.querySelector('.game');
-    const startGameBtn = document.querySelector('#start-game');
-    const startGame = document.querySelector('.start-game');
-    const startGameContent = document.querySelector('.start-game-content');
-    const gameOptions = document.querySelector('.game-options');
-    const startFlagsGameBtn = document.querySelector('#start-flags-game');
-    const guessFlagsGame = document.querySelector('.guess-flags-game');
-    const findFlagName = document.querySelector('.find-flag-name');
-    const guessFlags = document.querySelector('.guess-flags');
-    const gameContainer = document.querySelector('.game-container');
-    const findCountryName = document.querySelector('#find-country-name');
-    const countryFindModal = document.querySelector('#map-modal');
-    const loader = document.querySelector('.loader-container');
-    const gameDetailsNav = document.querySelector('.game-details');
-    const gameDetailBtns = document.querySelector('.game-detail-buttons');
-    const buttonsContainer = document.querySelector('.buttons-container');
-    const guessesLeftGame = document.querySelector('#guesses-num');
-    const scoreGame = document.querySelector('#score-num');
-    const highscoreGame = document.querySelector('#highscore-num');
-    const timerLeft = document.querySelector('.timer-count-left');
-    const zoomControls = document.querySelector('.zoom-controls');
-    const collapseBtn = document.querySelector('.collapse-btn');
+    const gameMain = document.querySelector(".game");
+    const startGameBtn = document.querySelector("#start-game");
+    const startGame = document.querySelector(".start-game");
+    const startGameContent = document.querySelector(".start-game-content");
+    const gameOptions = document.querySelector(".game-options");
+    const startFlagsGameBtn = document.querySelector("#start-flags-game");
+    const guessFlagsGame = document.querySelector(".guess-flags-game");
+    const findFlagName = document.querySelector(".find-flag-name");
+    const guessFlags = document.querySelector(".guess-flags");
+    const gameContainer = document.querySelector(".game-container");
+    const findCountryName = document.querySelector("#find-country-name");
+    const countryFindModal = document.querySelector("#map-modal");
+    const loader = document.querySelector(".loader-container");
+    const gameDetailsNav = document.querySelector(".game-details");
+    const gameDetailBtns = document.querySelector(".game-detail-buttons");
+    const buttonsContainer = document.querySelector(".buttons-container");
+    const guessesLeftGame = document.querySelector("#guesses-num");
+    const scoreGame = document.querySelector("#score-num");
+    const highscoreGame = document.querySelector("#highscore-num");
+    const timerLeft = document.querySelector(".timer-count-left");
+    const zoomControls = document.querySelector(".zoom-controls");
+    const collapseBtn = document.querySelector(".collapse-btn");
 
     class ToMapp {
       // Public class fields
@@ -73,7 +73,7 @@ fetch('./custom.geo.json')
 
         this.coords = randomLocation;
 
-        this.map = L.map('map', {
+        this.map = L.map("map", {
           zoomControl: false,
           maxBoundsViscosity: 0.0,
           minZoom: 1.0,
@@ -88,7 +88,7 @@ fetch('./custom.geo.json')
 
         // Add tiles
         this._createTiles(
-          'https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png'
+          "https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png"
         );
 
         this._loadPolygons();
@@ -99,10 +99,10 @@ fetch('./custom.geo.json')
         L.geoJSON(antarctica, {
           style: function () {
             return {
-              fillColor: '#7792D1',
+              fillColor: "#7792D1",
               weight: 2,
               opacity: 1,
-              color: '#2E4372',
+              color: "#2E4372",
               fillOpacity: 0.7,
             };
           },
@@ -121,10 +121,10 @@ fetch('./custom.geo.json')
         this.geojson = L.geoJSON(dataCountries, {
           style: function () {
             return {
-              fillColor: '#241403',
+              fillColor: "#241403",
               weight: 2,
               opacity: 1,
-              color: '#2c2620',
+              color: "#2c2620",
               fillOpacity: 0.7,
             };
           },
@@ -141,7 +141,7 @@ fetch('./custom.geo.json')
         L.tileLayer(`${mapType}`, {
           attribution:
             '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-          subdomains: 'abcd',
+          subdomains: "abcd",
           maxZoom: 20,
           noWrap: true,
         }).addTo(this.map);
@@ -184,9 +184,9 @@ fetch('./custom.geo.json')
       #popup;
       #zoomControlsVisible;
       #countryTrivia =
-        JSON.parse(window.localStorage.getItem('countryTrivia')) === null
+        JSON.parse(window.localStorage.getItem("countryTrivia")) === null
           ? true
-          : JSON.parse(window.localStorage.getItem('countryTrivia'));
+          : JSON.parse(window.localStorage.getItem("countryTrivia"));
 
       // Start game
       constructor() {
@@ -195,53 +195,53 @@ fetch('./custom.geo.json')
         this.#audioEffects = new Audio();
 
         // Start game
-        startGameBtn.addEventListener('click', this._startGame.bind(this));
+        startGameBtn.addEventListener("click", this._startGame.bind(this));
 
         // Choose difficulty
         gameOptions.addEventListener(
-          'click',
+          "click",
           this._chooseDiffuculty.bind(this)
         );
 
         // Start flags game
-        startFlagsGameBtn.addEventListener('click', this._flagsGame.bind(this));
+        startFlagsGameBtn.addEventListener("click", this._flagsGame.bind(this));
 
         // Listen for flag clicks
-        guessFlagsGame.addEventListener('click', this._guessFlag.bind(this));
+        guessFlagsGame.addEventListener("click", this._guessFlag.bind(this));
 
         // Randomize countries
         this._randomizeCountries();
 
         // Set timer
-        gameMain.addEventListener('input', e => {
+        gameMain.addEventListener("input", (e) => {
           this._setTimer(e);
           this._settingsControl(e);
         });
 
         // Timer stop btn
-        gameDetailsNav.addEventListener('click', this._stopTimer.bind(this));
+        gameDetailsNav.addEventListener("click", this._stopTimer.bind(this));
 
-        zoomControls.addEventListener('click', this._handleZoom.bind(this));
+        zoomControls.addEventListener("click", this._handleZoom.bind(this));
 
         // Game details btns
         buttonsContainer.addEventListener(
-          'click',
+          "click",
           this._handleClicks.bind(this)
         );
 
         // Find country (forfeit)
         countryFindModal.addEventListener(
-          'click',
+          "click",
           this._runModalActions.bind(this)
         );
       }
 
       // Play music
       _playMusic() {
-        this.#audio = new Audio('./media/audio/music.mp3');
+        this.#audio = new Audio("./media/audio/music.mp3");
         this.#audio.loop = true;
         this.#audio.volume = JSON.parse(
-          window.localStorage.getItem('audioVolume')
+          window.localStorage.getItem("audioVolume")
         );
 
         // Make sure the range stays at correct volume (localStorage)
@@ -249,23 +249,23 @@ fetch('./custom.geo.json')
 
         this.#audio.play();
 
-        if (JSON.parse(window.localStorage.getItem('audioVolume')) === null) {
+        if (JSON.parse(window.localStorage.getItem("audioVolume")) === null) {
           this.#audio.volume = 1;
           this.#savedVol = this.#audio.volume;
         }
 
         this.#audio.muted = JSON.parse(
-          window.localStorage.getItem('audioMusicMuted')
+          window.localStorage.getItem("audioMusicMuted")
         );
       }
 
       // Play sound effects
       _loadSoundEffects() {
         this.#audioEffects.volume = JSON.parse(
-          window.localStorage.getItem('audioEffectsVolume')
+          window.localStorage.getItem("audioEffectsVolume")
         );
         if (
-          JSON.parse(window.localStorage.getItem('audioEffectsVolume')) === null
+          JSON.parse(window.localStorage.getItem("audioEffectsVolume")) === null
         ) {
           this.#audioEffects.volume = 1;
           this.#savedVolEffects = this.#audioEffects.volume;
@@ -279,9 +279,9 @@ fetch('./custom.geo.json')
 
         layer.setStyle({
           weight: 5,
-          color: '#95816C',
-          fillColor: '#b9aa9a',
-          dashArray: '',
+          color: "#95816C",
+          fillColor: "#b9aa9a",
+          dashArray: "",
           fillOpacity: 0.8,
         });
 
@@ -299,14 +299,14 @@ fetch('./custom.geo.json')
       _playSound(filePath) {
         this.#audioEffects = new Audio(filePath);
         const audioEffectsSaved = JSON.parse(
-          window.localStorage.getItem('audioEffectsVolume')
+          window.localStorage.getItem("audioEffectsVolume")
         );
 
         this.#audioEffects.volume =
           audioEffectsSaved === null ? 1 : audioEffectsSaved;
 
         const audioEffectsMuted = JSON.parse(
-          window.localStorage.getItem('audioEffectsMuted')
+          window.localStorage.getItem("audioEffectsMuted")
         );
         if (audioEffectsMuted === true) {
           this.#audioEffects.muted = true;
@@ -343,7 +343,7 @@ fetch('./custom.geo.json')
 
       // Start flags game
       async _flagsGame() {
-        if (guessFlags.innerHTML === '') {
+        if (guessFlags.innerHTML === "") {
           this._showFlagsGameContent();
 
           let randomCountry;
@@ -364,7 +364,7 @@ fetch('./custom.geo.json')
 
           // Use Promise.all to fetch country data for each flag and populate countriesFound and countryCodes
           const countryCodes = await Promise.all(
-            randomCountryFlags.map(async randomFlag => {
+            randomCountryFlags.map(async (randomFlag) => {
               randomCountry = dataCountries.features[randomFlag];
               const countryCodeAlt = randomCountry.properties.adm0_iso;
               const countryCode = randomCountry.properties.iso_a2_eh;
@@ -373,7 +373,7 @@ fetch('./custom.geo.json')
               const countryData = await this._getCountryData(countryCodeToUse);
 
               const findCountry = countryData.find(
-                country => country.cca2 === countryCode
+                (country) => country.cca2 === countryCode
               );
               countriesFound.push(findCountry);
 
@@ -385,7 +385,7 @@ fetch('./custom.geo.json')
           const randomCountryCode = countryCodes[Math.floor(Math.random() * 3)];
 
           const countryFound = countriesFound.find(
-            country => country.cca2 === randomCountryCode
+            (country) => country.cca2 === randomCountryCode
           );
 
           // Set global country var to countryFound
@@ -396,15 +396,15 @@ fetch('./custom.geo.json')
 
           // Create buttons with each flag, using the data attributes to store the country code and code alternative, and joining the array into a string of HTML
           guessFlags.innerHTML = countryCodes
-            .map(countryCode => {
+            .map((countryCode) => {
               const countryFound = countriesFound.find(
-                country => country.cca2 === countryCode
+                (country) => country.cca2 === countryCode
               );
               return `<button class="guess-flag-btn" data-country-code="${countryCode}" data-country-code-alt="${countryFound?.cca3}">
         <img class="guess-flag-img" src="${countryFound?.flags?.png}" alt="${countryFound?.name?.common}"/>
       </button>`;
             })
-            .join('');
+            .join("");
         } else {
           this._showFlagsGameContent();
         }
@@ -412,7 +412,7 @@ fetch('./custom.geo.json')
 
       // Flags game new round
       _guessFlagsNewRound() {
-        guessFlags.classList.add('unclickable-flags');
+        guessFlags.classList.add("unclickable-flags");
         setTimeout(() => {
           // Clear both find flag name text and guess flags el
           this._clearElement(findFlagName);
@@ -421,7 +421,7 @@ fetch('./custom.geo.json')
           // Request new flags
           this._flagsGame();
 
-          guessFlags.classList.remove('unclickable-flags');
+          guessFlags.classList.remove("unclickable-flags");
         }, 3000);
       }
 
@@ -429,19 +429,19 @@ fetch('./custom.geo.json')
       _guessFlag(e) {
         const countryCode = e.target.dataset.countryCode;
         const countryCodeAlt = e.target.dataset.countryCodeAlt;
-        const btn = e.target.closest('button');
-        const guessBtns = document.querySelectorAll('.guess-flag-btn');
+        const btn = e.target.closest("button");
+        const guessBtns = document.querySelectorAll(".guess-flag-btn");
 
         const correctGuess =
-          (btn?.classList.contains('guess-flag-btn') &&
+          (btn?.classList.contains("guess-flag-btn") &&
             countryCode === this.#countryFound.cca2) ||
-          (btn?.classList.contains('guess-flag-btn') &&
+          (btn?.classList.contains("guess-flag-btn") &&
             countryCodeAlt === this.#countryFound.cca2);
 
         const incorrectGuess =
-          (btn?.classList.contains('guess-flag-btn') &&
+          (btn?.classList.contains("guess-flag-btn") &&
             countryCode !== this.#countryFound.cca2) ||
-          (btn?.classList.contains('guess-flag-btn') &&
+          (btn?.classList.contains("guess-flag-btn") &&
             countryCodeAlt !== this.#countryFound.cca2);
 
         if (correctGuess) {
@@ -449,9 +449,13 @@ fetch('./custom.geo.json')
             this.#countryFound.name.common
           }!`;
 
-          guessBtns.forEach(btn => {
+          guessBtns.forEach((btn) => {
             if (btn !== e.target) {
-              btn.classList.add('incorrect-flag');
+              btn.classList.add("incorrect-flag");
+            }
+
+            if (btn === e.target) {
+              btn.classList.add("correct-flag");
             }
           });
 
@@ -461,12 +465,12 @@ fetch('./custom.geo.json')
           findFlagName.textContent = `Doesn't seem right. The flag of ${
             this.#countryFound.name.common
           } looks like this:`;
-          guessBtns.forEach(btn => {
+          guessBtns.forEach((btn) => {
             if (
               btn.dataset.countryCode !== this.#countryFound.cca2 &&
               btn.dataset.countryCodeAlt !== this.#countryFound.cca2
             ) {
-              btn.classList.add('incorrect-flag');
+              btn.classList.add("incorrect-flag");
             }
           });
 
@@ -474,7 +478,7 @@ fetch('./custom.geo.json')
           this._guessFlagsNewRound();
         }
 
-        if (btn?.classList.contains('go-back-btn')) {
+        if (btn?.classList.contains("go-back-btn")) {
           this._showStartGameContent();
         }
       }
@@ -489,20 +493,20 @@ fetch('./custom.geo.json')
           // If either country code matches request country data
           this._getCountryData(
             countryCode === undefined ? countryCodeAlt : countryCode
-          ).then(data => {
+          ).then((data) => {
             const findCountry = data.filter(
-              country => country.cca2 === countryCode
+              (country) => country.cca2 === countryCode
             );
             const countryFound = findCountry[0];
             const currencies = Object.values(countryFound.currencies);
 
-            let currencyResult = '';
+            let currencyResult = "";
 
             currencies.forEach((currency, i) => {
               currencyResult += `${currency.name} (${currency.symbol})`;
 
               if (i + 1 < currencies.length) {
-                currencyResult += ', ';
+                currencyResult += ", ";
               }
             });
 
@@ -529,25 +533,25 @@ fetch('./custom.geo.json')
         const layer = e.target;
         let popupCorrect;
 
-        const validCountry = country => country === this.#randomCountry;
+        const validCountry = (country) => country === this.#randomCountry;
 
         // Country valid
         if (validCountry(countryClick)) {
           layer.setStyle({
-            color: '#277330',
-            fillColor: '#277330',
+            color: "#277330",
+            fillColor: "#277330",
           });
 
           // Display trivia only if turned on
           if (this.#countryTrivia === true) {
             const countryInfo = this._displayCountryInfo();
 
-            countryInfo.then(info => {
+            countryInfo.then((info) => {
               const coords = e.latlng;
 
               // Create trivia popup (only when correct)
               popupCorrect = L.popup({
-                className: 'popup-custom',
+                className: "popup-custom",
                 autoPan: false,
               }).setLatLng(coords).setContent(`
             <div class="popup-correct-info">
@@ -556,7 +560,7 @@ fetch('./custom.geo.json')
               }">
               <p>You've found: <span>${countryClick}</span></p>
               <p>Capital: <span>${info.capitalCity}</span></p>
-              <p>Language: <span>${info.languages.join(', ')}</span></p>
+              <p>Language: <span>${info.languages.join(", ")}</span></p>
               <p>Population: <span>${info.population}</span></p>
               <p>Currency: <span style="word-wrap: break-word;">${
                 info.currencies
@@ -576,18 +580,18 @@ fetch('./custom.geo.json')
           this._highscoreIncrease();
 
           // Play sound
-          this._playSound('./media/audio/goodGuess.mp3');
+          this._playSound("./media/audio/goodGuess.mp3");
 
-          if (timerLeft.classList.contains('input-time-active')) {
+          if (timerLeft.classList.contains("input-time-active")) {
             this.#sec += 15;
           }
 
           if (this.#mapClueBtn) {
-            this.#mapClueBtn.classList.remove('clue-on', 'timer-on');
+            this.#mapClueBtn.classList.remove("clue-on", "timer-on");
             // Enable map clue btn after correct guess
             this._enableBtn(this.#mapClueBtn);
 
-            if (this.#mapClueBtn.classList.contains('timer-on')) {
+            if (this.#mapClueBtn.classList.contains("timer-on")) {
               this._disableBtn(this.#mapClueBtn);
             }
           }
@@ -602,8 +606,8 @@ fetch('./custom.geo.json')
         // Country invalid
         if (!validCountry(countryClick)) {
           layer.setStyle({
-            color: '#A90B13',
-            fillColor: '#A90B13',
+            color: "#A90B13",
+            fillColor: "#A90B13",
           });
 
           if (this.#countryTrivia === false) {
@@ -615,7 +619,7 @@ fetch('./custom.geo.json')
           }
 
           // Play sound
-          this._playSound('./media/audio/badGuess.mp3');
+          this._playSound("./media/audio/badGuess.mp3");
 
           // Decrease guesses
           this._guessesLeftDecrease();
@@ -636,7 +640,7 @@ fetch('./custom.geo.json')
       // Display zoom controls
       _displayZoomControls() {
         let zoomControlsOn = JSON.parse(
-          window.localStorage.getItem('zoomControlsVisible')
+          window.localStorage.getItem("zoomControlsVisible")
         );
 
         if (zoomControlsOn === false) {
@@ -648,7 +652,7 @@ fetch('./custom.geo.json')
         }
 
         if (
-          JSON.parse(window.localStorage.getItem('zoomControlsVisible')) ===
+          JSON.parse(window.localStorage.getItem("zoomControlsVisible")) ===
           undefined
         ) {
           zoomControlsOn = true;
@@ -669,31 +673,31 @@ fetch('./custom.geo.json')
 
       // Choose difficulty
       _chooseDiffuculty(e) {
-        const btn = e.target.closest('button');
+        const btn = e.target.closest("button");
 
         const btnsHard = [
-          document.querySelector('.est-position-btn'),
-          document.querySelector('.map-clue-btn'),
+          document.querySelector(".est-position-btn"),
+          document.querySelector(".map-clue-btn"),
         ];
 
-        const removeBtns = btns => {
-          btns.forEach(btn => {
+        const removeBtns = (btns) => {
+          btns.forEach((btn) => {
             btn.remove();
           });
         };
 
-        if (btn?.classList.contains('easy-mode-btn')) {
-          this.#difficulty = 'easy';
+        if (btn?.classList.contains("easy-mode-btn")) {
+          this.#difficulty = "easy";
           this.#guessesLeft = 15;
         }
 
-        if (btn?.classList.contains('medium-mode-btn')) {
-          this.#difficulty = 'medium';
+        if (btn?.classList.contains("medium-mode-btn")) {
+          this.#difficulty = "medium";
           this.#guessesLeft = 10;
         }
 
-        if (btn?.classList.contains('hard-mode-btn')) {
-          this.#difficulty = 'hard';
+        if (btn?.classList.contains("hard-mode-btn")) {
+          this.#difficulty = "hard";
           this.#guessesLeft = 5;
           removeBtns(btnsHard);
         }
@@ -702,7 +706,7 @@ fetch('./custom.geo.json')
           return;
         }
 
-        if (btn?.classList.contains('go-back-btn')) {
+        if (btn?.classList.contains("go-back-btn")) {
           this._gameOptionsBack();
         } else {
           // Clear flags minigame
@@ -742,12 +746,12 @@ fetch('./custom.geo.json')
         );
 
         this.#randomCountry = dataCountries.features.find(
-          country => country === dataCountries.features[this.#randomCountryI]
+          (country) => country === dataCountries.features[this.#randomCountryI]
         ).properties.name_en;
 
         // Get random country object
         this.#randomCountryDetails = dataCountries.features.find(
-          country => country === dataCountries.features[this.#randomCountryI]
+          (country) => country === dataCountries.features[this.#randomCountryI]
         );
       }
       // Randomize countries
@@ -773,7 +777,7 @@ fetch('./custom.geo.json')
         if (this.#countriesToGuess.length === dataCountries.features.length) {
           // Remove layer for map details & visibility
           this._createTiles(
-            'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png'
+            "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
           );
 
           // Reset GeoJSON
@@ -788,7 +792,7 @@ fetch('./custom.geo.json')
             clearInterval(this.#timerInterval);
           }
 
-          this._openModal('guessedAll');
+          this._openModal("guessedAll");
         }
       }
 
@@ -798,10 +802,10 @@ fetch('./custom.geo.json')
         findCountryName.innerHTML = this.#randomCountry;
 
         // If difficulty set to hard, display a flag in place of country name
-        if (this.#difficulty === 'hard') {
+        if (this.#difficulty === "hard") {
           const countryInfo = this._displayCountryInfo();
 
-          countryInfo.then(info => {
+          countryInfo.then((info) => {
             if (info.countryFound === undefined) {
               findCountryName.innerHTML = this.#randomCountry;
             } else {
@@ -814,19 +818,19 @@ fetch('./custom.geo.json')
       // Find country modal
       _openModal(modalName) {
         // Saved time to use in timerModal
-        const savedTime = JSON.parse(window.localStorage.getItem('savedTime'));
+        const savedTime = JSON.parse(window.localStorage.getItem("savedTime"));
 
         // Only display saved time, otherwise value is empty
         const calcSavedtime = () =>
-          savedTime ? this._getSavedTime() : ['', ''];
+          savedTime ? this._getSavedTime() : ["", ""];
 
         // Check switch btns if localStorage set
         // Check sound switch
         const musicMuted = JSON.parse(
-          window.localStorage.getItem('audioMusicMuted')
+          window.localStorage.getItem("audioMusicMuted")
         );
         const soundsMuted = JSON.parse(
-          window.localStorage.getItem('audioEffectsMuted')
+          window.localStorage.getItem("audioEffectsMuted")
         );
         const switchSoundChecked = musicMuted === true && soundsMuted === true;
 
@@ -835,7 +839,7 @@ fetch('./custom.geo.json')
 
         // Check zoom controls switch
         const zoomControlsOn = JSON.parse(
-          window.localStorage.getItem('zoomControlsVisible')
+          window.localStorage.getItem("zoomControlsVisible")
         );
         if (zoomControlsOn === undefined) {
           zoomControlsOn = false;
@@ -843,14 +847,14 @@ fetch('./custom.geo.json')
 
         // Check country trivia switch
         const countryTriviaOn =
-          JSON.parse(window.localStorage.getItem('countryTrivia')) !== false;
+          JSON.parse(window.localStorage.getItem("countryTrivia")) !== false;
 
         // Clear modal content
         this._clearElement(countryFindModal);
 
-        let html = '';
+        let html = "";
 
-        if (modalName === 'countryFindModal')
+        if (modalName === "countryFindModal")
           html = `
       <div class="map-modal-content">
       <span class="close-modal"><i class="fa-solid fa-xmark"></i></span>
@@ -876,7 +880,7 @@ fetch('./custom.geo.json')
     </div>
     `;
 
-        if (modalName === 'playAgainModal')
+        if (modalName === "playAgainModal")
           html = `
         <div class="map-modal-content">
         <span class="close-modal"><i class="fa-solid fa-xmark"></i></span>
@@ -890,7 +894,7 @@ fetch('./custom.geo.json')
         </div>
         `;
 
-        if (modalName === 'markerModal') {
+        if (modalName === "markerModal") {
           html = `
         <div class="map-modal-content">
         <span class="close-modal"><i class="fa-solid fa-xmark"></i></span>
@@ -916,7 +920,7 @@ fetch('./custom.geo.json')
       `;
         }
 
-        if (modalName === 'timerModal')
+        if (modalName === "timerModal")
           html = `
       <div class="map-modal-content">
       <span class="close-modal"><i class="fa-solid fa-xmark"></i></span>
@@ -954,7 +958,7 @@ fetch('./custom.geo.json')
     </div>
         `;
 
-        if (modalName === 'settingsModal')
+        if (modalName === "settingsModal")
           html = `
       <div class="map-modal-content">
       <span class="close-modal"><i class="fa-solid fa-xmark"></i></span>
@@ -992,14 +996,14 @@ fetch('./custom.geo.json')
           <div class="audio-switch switch-btn">
             <i
               class="fa-solid fa-volume-${
-                switchSoundChecked === true ? 'xmark' : 'high'
+                switchSoundChecked === true ? "xmark" : "high"
               }"
             ></i>
             <span class="switch-audio-text switch-btn-text"
-              >Sound ${switchSoundChecked === true ? 'off' : 'on'}</span
+              >Sound ${switchSoundChecked === true ? "off" : "on"}</span
             >
             <input type="checkbox" class="audio-switch-btn"
-            id="audio-switch" ${switchSoundChecked === true ? 'checked' : ''} />
+            id="audio-switch" ${switchSoundChecked === true ? "checked" : ""} />
             <label for="audio-switch" class="switch">
               <span class="slider"></span>
             </label>
@@ -1008,17 +1012,17 @@ fetch('./custom.geo.json')
           <div class="full-screen-switch switch-btn">
             <i
               class="fa-solid fa-${
-                fullScreenChecked === true ? 'expand' : 'compress'
+                fullScreenChecked === true ? "expand" : "compress"
               }"
             ></i>
             <span class="switch-full-screen-text switch-btn-text"
               >
-              Fullscreen ${fullScreenChecked === true ? 'on' : 'off'}
+              Fullscreen ${fullScreenChecked === true ? "on" : "off"}
             </span
             >
             <input type="checkbox" class="full-screen-switch-btn"
             id="full-screen-switch" ${
-              fullScreenChecked === true ? 'checked' : ''
+              fullScreenChecked === true ? "checked" : ""
             } />
             <label for="full-screen-switch" class="switch">
               <span class="slider"></span>
@@ -1028,15 +1032,15 @@ fetch('./custom.geo.json')
           <div class="zoom-controls-switch switch-btn">
             <i
               class="fa-solid fa-magnifying-glass${
-                zoomControlsOn === false ? '' : '-location'
+                zoomControlsOn === false ? "" : "-location"
               }"
             ></i>
             <span class="switch-zoom-controls-text switch-btn-text"
-              >Zoom ${zoomControlsOn === false ? 'off' : 'on'}</span
+              >Zoom ${zoomControlsOn === false ? "off" : "on"}</span
             >
             <input type="checkbox" class="zoom-controls-switch-btn"
             id="zoom-controls-switch" ${
-              zoomControlsOn === false ? 'checked' : ''
+              zoomControlsOn === false ? "checked" : ""
             }/>
             <label for="zoom-controls-switch" class="switch">
               <span class="slider"></span>
@@ -1046,14 +1050,14 @@ fetch('./custom.geo.json')
           
           <div class="country-trivia-switch switch-btn">
           <i class="fa-solid fa-book${
-            countryTriviaOn === true ? '-open' : ''
+            countryTriviaOn === true ? "-open" : ""
           }"></i>
             <span class="switch-country-trivia-text switch-btn-text"
-              >Geo facts ${countryTriviaOn === true ? 'on' : 'off'}</span
+              >Geo facts ${countryTriviaOn === true ? "on" : "off"}</span
             >
             <input type="checkbox" class="country-trivia-switch-btn"
             id="country-trivia-switch" ${
-              countryTriviaOn === false ? 'checked' : ''
+              countryTriviaOn === false ? "checked" : ""
             }/>
             <label for="country-trivia-switch" class="switch">
               <span class="slider"></span>
@@ -1067,7 +1071,7 @@ fetch('./custom.geo.json')
     </div>
       `;
 
-        if (modalName === 'guessedAll')
+        if (modalName === "guessedAll")
           html = `
            <div class="map-modal-content">
               <p>
@@ -1081,18 +1085,18 @@ fetch('./custom.geo.json')
 
         this._showElement(countryFindModal);
 
-        countryFindModal.insertAdjacentHTML('beforeend', html);
+        countryFindModal.insertAdjacentHTML("beforeend", html);
       }
 
       _colorizeSlider(slider) {
         const value =
           ((slider.value - slider.min) / (slider.max - slider.min)) * 100;
         slider.style.background =
-          'linear-gradient(to right, var(--light-dark-color) 0%, var(--light-dark-color) ' +
+          "linear-gradient(to right, var(--light-dark-color) 0%, var(--light-dark-color) " +
           value +
-          '%, var(--grey-color) ' +
+          "%, var(--grey-color) " +
           value +
-          '%, var(--grey-color) 100%)';
+          "%, var(--grey-color) 100%)";
 
         return slider.style.background;
       }
@@ -1102,20 +1106,20 @@ fetch('./custom.geo.json')
         // FIX
         // Swap label_y and label_x to properly center the country on the map - GeoJSON has lng, lat and Leaflet lat, lng
 
-        const checkAnswer = answer =>
+        const checkAnswer = (answer) =>
           e.target
-            .closest('button')
+            .closest("button")
             .classList.contains(`map-modal-answer-${answer}`);
 
         // To avoid classList null errors
-        if (e.target.closest('button') === null) return;
+        if (e.target.closest("button") === null) return;
 
-        if (checkAnswer('positive')) {
+        if (checkAnswer("positive")) {
           // Game finished
           this._gameFinished();
         }
 
-        if (checkAnswer('negative')) {
+        if (checkAnswer("negative")) {
           // Clear modal content
           this._clearElement(countryFindModal);
           this._hideElement(countryFindModal);
@@ -1127,7 +1131,7 @@ fetch('./custom.geo.json')
         let countryName = this.#randomCountry;
 
         // remove all existing layers from the map
-        this.geojson.eachLayer(layer => {
+        this.geojson.eachLayer((layer) => {
           this.map.removeLayer(layer);
         });
 
@@ -1136,15 +1140,15 @@ fetch('./custom.geo.json')
           style: function (feature) {
             if (feature.properties.name_en === countryName) {
               return {
-                fillColor: '#29D605',
+                fillColor: "#29D605",
                 fillOpacity: 0.5,
-                color: 'transparent',
+                color: "transparent",
               };
             } else {
               return {
-                fillColor: 'transparent',
+                fillColor: "transparent",
                 fillOpacity: 0,
-                color: 'transparent',
+                color: "transparent",
               };
             }
           },
@@ -1153,9 +1157,9 @@ fetch('./custom.geo.json')
 
       _collapseMobileBtns() {
         // Collapse buttons for better clarity
-        gameDetailBtns.classList.remove('mobile-collapsed');
-        collapseBtn.classList.remove('collapse-on');
-        buttonsContainer.classList.remove('buttons-container-on');
+        gameDetailBtns.classList.remove("mobile-collapsed");
+        collapseBtn.classList.remove("collapse-on");
+        buttonsContainer.classList.remove("buttons-container-on");
       }
 
       _flyToCountry() {
@@ -1184,7 +1188,7 @@ fetch('./custom.geo.json')
 
         // Create visible country tiles
         this._createTiles(
-          'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png'
+          "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
         );
 
         // Reset GeoJSON
@@ -1207,7 +1211,7 @@ fetch('./custom.geo.json')
         this._gameOverMarker();
 
         // Show play again modal
-        this._openModal('playAgainModal');
+        this._openModal("playAgainModal");
 
         // Collapse mobile buttons
         this._collapseMobileBtns();
@@ -1220,7 +1224,7 @@ fetch('./custom.geo.json')
         let tooltip;
 
         // Whem marker clicked, get the id and obj
-        this.#marker.on('click', e => {
+        this.#marker.on("click", (e) => {
           const markerID = e.target._leaflet_id;
           this.#markers.find((marker, i) => {
             if (markerID === marker._leaflet_id) {
@@ -1230,7 +1234,7 @@ fetch('./custom.geo.json')
           });
         });
 
-        this.map.on('popupopen', e => {
+        this.map.on("popupopen", (e) => {
           // Assign tooltip
           if (e.popup._source) {
             tooltip = e.popup._source._tooltip;
@@ -1245,23 +1249,23 @@ fetch('./custom.geo.json')
 
           // Add event listener to the button in the popup content
           const removeMarkerButton =
-            popupContent.querySelector('.remove-marker-btn');
+            popupContent.querySelector(".remove-marker-btn");
 
-          removeMarkerButton?.addEventListener('click', () => {
-            this.#markers.find(marker => {
+          removeMarkerButton?.addEventListener("click", () => {
+            this.#markers.find((marker) => {
               if (marker === this.#markerFound) {
                 // // Hide tooltip
                 // tooltip.setOpacity(0);
                 // Remove marker layer and remove from array
                 this.map.removeLayer(this.#markerFound);
                 this.#markers.splice(this.#markerIndex, 1);
-                removeMarkerButton?.removeEventListener('click', this);
+                removeMarkerButton?.removeEventListener("click", this);
               }
             });
           });
         });
 
-        this.map.on('popupclose', e => {
+        this.map.on("popupclose", (e) => {
           // Show tooltip when popup closed
           if (tooltip) {
             tooltip.setOpacity(1);
@@ -1270,8 +1274,8 @@ fetch('./custom.geo.json')
           // Remove the event listener
           if (popupContent) {
             popupContent
-              .querySelector('.remove-marker-btn')
-              ?.removeEventListener('click', this);
+              .querySelector(".remove-marker-btn")
+              ?.removeEventListener("click", this);
           }
         });
       }
@@ -1290,50 +1294,50 @@ fetch('./custom.geo.json')
 
       // Set personal marker
       _setMarker(e) {
-        const markerOptionBtn = e.target.closest('button');
-        const addMarkerInput = document.querySelector('.marker-name');
-        const markerInfo = document.querySelector('.marker-info');
+        const markerOptionBtn = e.target.closest("button");
+        const addMarkerInput = document.querySelector(".marker-name");
+        const markerInfo = document.querySelector(".marker-info");
         const markerNameWarning = document.querySelector(
-          '.marker-name-warning'
+          ".marker-name-warning"
         );
-        const root = document.querySelector(':root');
-        const mapEl = document.querySelector('#map');
+        const root = document.querySelector(":root");
+        const mapEl = document.querySelector("#map");
 
-        const markerBtn = document.querySelector('.marker-btn');
-        const mapClueBtn = document.querySelector('.map-clue-btn');
+        const markerBtn = document.querySelector(".marker-btn");
+        const mapClueBtn = document.querySelector(".map-clue-btn");
 
         const isMarkerFilled =
-          markerOptionBtn?.classList.contains('add-marker-btn') &&
-          addMarkerInput.value !== '' &&
+          markerOptionBtn?.classList.contains("add-marker-btn") &&
+          addMarkerInput.value !== "" &&
           !/^\s*$/.test(addMarkerInput.value);
 
         const isMarkerEmpty =
-          (markerOptionBtn?.classList.contains('add-marker-btn') &&
-            addMarkerInput.value === '') ||
-          (markerOptionBtn?.classList.contains('add-marker-btn') &&
+          (markerOptionBtn?.classList.contains("add-marker-btn") &&
+            addMarkerInput.value === "") ||
+          (markerOptionBtn?.classList.contains("add-marker-btn") &&
             /^\s*$/.test(addMarkerInput.value));
 
         // Show info
         const showMarkerInfo = () => {
-          addMarkerInput.classList.remove('input-warning');
+          addMarkerInput.classList.remove("input-warning");
           this._showInvisible(markerInfo);
         };
 
         // Show warning
         const showMarkerWarning = () => {
-          addMarkerInput.classList.add('input-warning');
+          addMarkerInput.classList.add("input-warning");
           this._showInvisible(markerNameWarning);
         };
 
         // Hide warning
         const hideMarkerWarning = () => {
-          addMarkerInput.classList.remove('input-warning');
+          addMarkerInput.classList.remove("input-warning");
           this._hideVisible(markerNameWarning);
         };
 
-        const addMarker = e => {
+        const addMarker = (e) => {
           this.#popup = L.popup({
-            className: 'popup-custom',
+            className: "popup-custom",
           }).setContent(`
       <div class="marker-content">
         <div class="marker-name">${this.#markerName}</div>
@@ -1348,8 +1352,8 @@ fetch('./custom.geo.json')
             .addTo(this.map);
 
           const tooltip = L.tooltip({
-            className: 'popup-custom',
-            direction: 'left',
+            className: "popup-custom",
+            direction: "left",
           }).setContent(this.#markerName);
 
           this.#marker.bindTooltip(tooltip).openTooltip();
@@ -1358,22 +1362,22 @@ fetch('./custom.geo.json')
 
           this._deleteMarker(e);
 
-          this.map.off('click');
+          this.map.off("click");
 
-          markerBtn.classList.remove('marker-active');
+          markerBtn.classList.remove("marker-active");
 
           // Add geoJSON here to make sure the map returns to its original state each time the marker is set
-          if (!mapClueBtn?.classList.contains('clue-on')) {
+          if (!mapClueBtn?.classList.contains("clue-on")) {
             this.map.addLayer(this.geojson);
           }
 
           // Reset inputs
-          addMarkerInput.value = '';
+          addMarkerInput.value = "";
           addMarkerInput.focus();
 
           // Set cursors to default
-          root.style.setProperty('--cursor', 'pointer');
-          mapEl.classList.remove('set-marker-cursor');
+          root.style.setProperty("--cursor", "pointer");
+          mapEl.classList.remove("set-marker-cursor");
 
           this.#markers.push(this.#marker);
         };
@@ -1391,14 +1395,14 @@ fetch('./custom.geo.json')
 
           this._collapseMobileBtns();
 
-          markerBtn.classList.add('marker-active');
+          markerBtn.classList.add("marker-active");
 
           // Change cursor for marker placement
-          root.style.setProperty('--cursor', 'crosshair');
-          mapEl.classList.add('set-marker-cursor');
+          root.style.setProperty("--cursor", "crosshair");
+          mapEl.classList.add("set-marker-cursor");
 
           // Click on the map creates new marker
-          this.map.on('click', addMarker);
+          this.map.on("click", addMarker);
 
           // Remove geoJSON && disable Remove All Btn for the duration of marker placement
           this.map.removeLayer(this.geojson);
@@ -1409,14 +1413,14 @@ fetch('./custom.geo.json')
         }
 
         if (
-          e.target.closest('span')?.classList.contains('close-modal') &&
-          !markerBtn.classList.contains('marker-active')
+          e.target.closest("span")?.classList.contains("close-modal") &&
+          !markerBtn.classList.contains("marker-active")
         ) {
           // Remove function when modal closed
-          this.map.off('click');
+          this.map.off("click");
         }
 
-        if (markerOptionBtn?.classList.contains('remove-markers-btn')) {
+        if (markerOptionBtn?.classList.contains("remove-markers-btn")) {
           this._deleteAllMarkers();
         }
       }
@@ -1424,8 +1428,8 @@ fetch('./custom.geo.json')
       // Custom marker icon
       _customIcon() {
         return {
-          iconUrl: './media/images/marker.png',
-          shadowUrl: './media/images/marker-shadow.png',
+          iconUrl: "./media/images/marker.png",
+          shadowUrl: "./media/images/marker-shadow.png",
           iconSize: [50, 70],
           iconAnchor: [20, 50],
           popupAnchor: [5, -25],
@@ -1439,10 +1443,10 @@ fetch('./custom.geo.json')
       _gameOverMarker() {
         const countryInfo = this._displayCountryInfo();
 
-        countryInfo.then(info => {
+        countryInfo.then((info) => {
           // Display information in a popup
           const popup = L.popup({
-            className: 'popup-custom',
+            className: "popup-custom",
             autoPan: false,
           })
             .setContent(
@@ -1452,7 +1456,7 @@ fetch('./custom.geo.json')
               }">
           <p>You've found: <span>${this.#randomCountry}</span></p>
           <p>Capital: <span>${info.capitalCity}</span></p>
-          <p>Language: <span>${info.languages.join(', ')}</span></p>
+          <p>Language: <span>${info.languages.join(", ")}</span></p>
           <p>Population: <span>${info.population}</span></p>
           <p>Currency: <span>${info.currencies}</span></p>
         </div>`
@@ -1487,7 +1491,7 @@ fetch('./custom.geo.json')
       // Display highscore (nav)
       _displayHighscore() {
         const highscoreSaved = JSON.parse(
-          window.localStorage.getItem('highscoreSaved')
+          window.localStorage.getItem("highscoreSaved")
         );
 
         highscoreGame.textContent =
@@ -1496,37 +1500,37 @@ fetch('./custom.geo.json')
 
       // Settings control (modal)
       _settingsControl(e) {
-        const hasEl = cl => e.target.classList.contains(cl);
+        const hasEl = (cl) => e.target.classList.contains(cl);
 
-        this.#audioSlider = document.querySelector('.audio-music-input');
+        this.#audioSlider = document.querySelector(".audio-music-input");
         this.#audioEffectsSlider = document.querySelector(
-          '.audio-effects-input'
+          ".audio-effects-input"
         );
-        const switchAudioBtn = document.querySelector('.audio-switch-btn');
+        const switchAudioBtn = document.querySelector(".audio-switch-btn");
         const switchFullscreenBtn = document.querySelector(
-          '.full-screen-switch-btn'
+          ".full-screen-switch-btn"
         );
         const switchZoomBtn = document.querySelector(
-          '.zoom-controls-switch-btn'
+          ".zoom-controls-switch-btn"
         );
         const switchCountryTriviaBtn = document.querySelector(
-          '.country-trivia-switch-btn'
+          ".country-trivia-switch-btn"
         );
 
         const btn = e.target;
-        const btnClosest = e.target.closest('button');
+        const btnClosest = e.target.closest("button");
 
         const setSwitchStyle = (el, text, icon) => {
           // Change switchFullscreenBtn text and icon when muted
-          el.parentElement.querySelector('.switch-btn-text').textContent = text;
+          el.parentElement.querySelector(".switch-btn-text").textContent = text;
 
-          el.parentElement.querySelector('i').className = icon;
+          el.parentElement.querySelector("i").className = icon;
         };
 
         const updateVolume = (elId, lsName, audio, slider, savedVol) => {
           if (hasEl(elId)) {
             this._colorizeSlider(slider);
-            slider.setAttribute('value', audio.volume);
+            slider.setAttribute("value", audio.volume);
             audio.volume = slider.value;
             audio.muted = false;
             savedVol = audio.volume;
@@ -1536,7 +1540,7 @@ fetch('./custom.geo.json')
             if (switchAudioBtn.checked === true) {
               audio.muted = true;
               this._colorizeSlider(slider);
-              slider.setAttribute('value', audio.volume);
+              slider.setAttribute("value", audio.volume);
               audio.volume = slider.value;
               savedVol = audio.volume;
               return;
@@ -1545,32 +1549,32 @@ fetch('./custom.geo.json')
         };
 
         updateVolume(
-          'audio-music-input',
-          'audioVolume',
+          "audio-music-input",
+          "audioVolume",
           this.#audio,
           this.#audioSlider,
           this.#savedVol
         );
 
         updateVolume(
-          'audio-effects-input',
-          'audioEffectsVolume',
+          "audio-effects-input",
+          "audioEffectsVolume",
           this.#audioEffects,
           this.#audioEffectsSlider,
           this.#savedVolEffects
         );
 
         if (this.#audioSlider === null && this.#audioEffectsSlider === null) {
-          console.log('audio and effects sliders not found');
+          console.log("audio and effects sliders not found");
           return;
         }
 
         // Switch btns
         //  Sound switch
         if (
-          btn.classList.contains('audio-switch') ||
+          btn.classList.contains("audio-switch") ||
           btn === switchAudioBtn ||
-          btn.classList.contains('switch-audio-text')
+          btn.classList.contains("switch-audio-text")
         ) {
           // Mute audio
           switchAudioBtn.checked = !switchAudioBtn.checked;
@@ -1578,7 +1582,7 @@ fetch('./custom.geo.json')
 
           // Update ls
           window.localStorage.setItem(
-            'audioMusicMuted',
+            "audioMusicMuted",
             JSON.stringify(this.#audio.muted)
           );
 
@@ -1588,28 +1592,28 @@ fetch('./custom.geo.json')
 
           // Update ls
           window.localStorage.setItem(
-            'audioEffectsMuted',
+            "audioEffectsMuted",
             JSON.stringify(this.#audioEffects.muted)
           );
 
           // Change switchAudioBtn text and icon when muted
           setSwitchStyle(
             switchAudioBtn,
-            'Sound off',
-            'fa-solid fa-volume-xmark'
+            "Sound off",
+            "fa-solid fa-volume-xmark"
           );
         }
 
         // Change switchAudioBtn text and icon when not muted
         if (this.#audio.muted === false && this.#audioEffects.muted === false) {
-          setSwitchStyle(switchAudioBtn, 'Sound on', 'fa-solid fa-volume-high');
+          setSwitchStyle(switchAudioBtn, "Sound on", "fa-solid fa-volume-high");
         }
 
         // Fullscreen switch
         if (
-          btn.classList.contains('full-screen-switch') ||
+          btn.classList.contains("full-screen-switch") ||
           btn === switchFullscreenBtn ||
-          btn.classList.contains('switch-full-screen-text')
+          btn.classList.contains("switch-full-screen-text")
         ) {
           switchFullscreenBtn.checked = !switchFullscreenBtn.checked;
 
@@ -1628,16 +1632,16 @@ fetch('./custom.geo.json')
           if (requestFullscreen && !document.fullscreenElement) {
             setSwitchStyle(
               switchFullscreenBtn,
-              'Fullscreen on',
-              'fa-solid fa-expand'
+              "Fullscreen on",
+              "fa-solid fa-expand"
             );
 
             document.documentElement.requestFullscreen();
           } else if (exitFullscreen && document.fullscreenElement) {
             setSwitchStyle(
               switchFullscreenBtn,
-              'Fullscreen off',
-              'fa-solid fa-compress'
+              "Fullscreen off",
+              "fa-solid fa-compress"
             );
 
             document.exitFullscreen();
@@ -1646,52 +1650,52 @@ fetch('./custom.geo.json')
 
         // Zoom controls switch
         if (
-          btn.classList.contains('zoom-controls-switch') ||
+          btn.classList.contains("zoom-controls-switch") ||
           btn === switchZoomBtn ||
-          btn.classList.contains('switch-zoom-controls-text')
+          btn.classList.contains("switch-zoom-controls-text")
         ) {
           switchZoomBtn.checked = !switchZoomBtn.checked;
 
           setSwitchStyle(
             switchZoomBtn,
-            'Zoom off',
-            'fa-solid fa-magnifying-glass'
+            "Zoom off",
+            "fa-solid fa-magnifying-glass"
           );
 
           this.#zoomControlsVisible = false;
           this._hideVisible(zoomControls);
 
           window.localStorage.setItem(
-            'zoomControlsVisible',
+            "zoomControlsVisible",
             JSON.stringify(this.#zoomControlsVisible)
           );
         }
 
         if (
-          (btn.classList.contains('zoom-controls-switch') &&
+          (btn.classList.contains("zoom-controls-switch") &&
             switchZoomBtn.checked === false) ||
-          (btn.classList.contains('switch-zoom-controls-text') &&
+          (btn.classList.contains("switch-zoom-controls-text") &&
             switchZoomBtn.checked === false)
         ) {
           this.#zoomControlsVisible = true;
           this._showInvisible(zoomControls);
           window.localStorage.setItem(
-            'zoomControlsVisible',
+            "zoomControlsVisible",
             JSON.stringify(this.#zoomControlsVisible)
           );
 
           setSwitchStyle(
             switchZoomBtn,
-            'Zoom on',
-            'fa-solid fa-magnifying-glass-location'
+            "Zoom on",
+            "fa-solid fa-magnifying-glass-location"
           );
         }
 
         // Country trivia switch
         if (
-          btn.classList.contains('country-trivia-switch') ||
+          btn.classList.contains("country-trivia-switch") ||
           btn === switchCountryTriviaBtn ||
-          btn.classList.contains('switch-country-trivia-text')
+          btn.classList.contains("switch-country-trivia-text")
         ) {
           switchCountryTriviaBtn.checked = !switchCountryTriviaBtn.checked;
 
@@ -1699,39 +1703,39 @@ fetch('./custom.geo.json')
 
           setSwitchStyle(
             switchCountryTriviaBtn,
-            'Geo facts off',
-            'fa-solid fa-book'
+            "Geo facts off",
+            "fa-solid fa-book"
           );
 
           window.localStorage.setItem(
-            'countryTrivia',
+            "countryTrivia",
             JSON.stringify(this.#countryTrivia)
           );
         }
 
         // Disable or enable country trivia popups
         if (
-          (btn.classList.contains('country-trivia-switch') &&
+          (btn.classList.contains("country-trivia-switch") &&
             switchCountryTriviaBtn.checked === false) ||
-          (btn.classList.contains('switch-country-trivia-text') &&
+          (btn.classList.contains("switch-country-trivia-text") &&
             switchCountryTriviaBtn.checked === false)
         ) {
           this.#countryTrivia = true;
 
           setSwitchStyle(
             switchCountryTriviaBtn,
-            'Geo facts on',
-            'fa-solid fa-book-open'
+            "Geo facts on",
+            "fa-solid fa-book-open"
           );
 
           window.localStorage.setItem(
-            'countryTrivia',
+            "countryTrivia",
             JSON.stringify(this.#countryTrivia)
           );
         }
 
         // Leave game btn
-        if (btnClosest?.classList.contains('leave-game-btn')) {
+        if (btnClosest?.classList.contains("leave-game-btn")) {
           this._loader(true, false);
         }
       }
@@ -1739,10 +1743,10 @@ fetch('./custom.geo.json')
       // Play again
       _playAgain(e) {
         const closeModalPresent =
-          e.target.parentElement.classList.contains('close-modal');
+          e.target.parentElement.classList.contains("close-modal");
 
         const playAgainBtnPresent =
-          e.target.classList.contains('play-again-btn');
+          e.target.classList.contains("play-again-btn");
 
         if (playAgainBtnPresent) this._loader(true, false);
 
@@ -1754,7 +1758,7 @@ fetch('./custom.geo.json')
 
       // Access saved time
       _getSavedTime() {
-        const savedTime = JSON.parse(window.localStorage.getItem('savedTime'));
+        const savedTime = JSON.parse(window.localStorage.getItem("savedTime"));
 
         if (savedTime === null) {
           return;
@@ -1771,7 +1775,7 @@ fetch('./custom.geo.json')
           sec = `0${sec}`;
         }
 
-        if (Number(min) === 0 && sec === '00') {
+        if (Number(min) === 0 && sec === "00") {
           // Game finished
           this._gameFinished();
 
@@ -1785,17 +1789,17 @@ fetch('./custom.geo.json')
       _defineMinSec(min, sec) {
         // Minutes
         if (min.value.length > 1) {
-          min.value = min.value.split('').splice(1, 1);
+          min.value = min.value.split("").splice(1, 1);
         }
 
         if (min.value >= 2) {
           min.value = 2;
-          sec.value = '00';
+          sec.value = "00";
         }
 
         // Seconds
         if (sec.value.length > 2) {
-          sec.value = sec.value.split('').splice(2, 1);
+          sec.value = sec.value.split("").splice(2, 1);
         } else if (sec.value > 59) {
           min.value++;
         }
@@ -1807,16 +1811,16 @@ fetch('./custom.geo.json')
 
         if (sec.value > 59 && min.value >= 2) {
           min.value = 2;
-          sec.value = '00';
+          sec.value = "00";
         }
       }
 
       // Set timer
       _setTimer(e) {
-        const checkForEl = elClass => e.target.classList.contains(elClass);
+        const checkForEl = (elClass) => e.target.classList.contains(elClass);
 
-        const checkForVal = el => !el.value;
-        const checkForNum = el => Number(el) === 0;
+        const checkForVal = (el) => !el.value;
+        const checkForNum = (el) => Number(el) === 0;
 
         const clearTimer = (min, sec) => {
           if (checkForNum(min) && checkForNum(sec)) {
@@ -1828,18 +1832,18 @@ fetch('./custom.geo.json')
           timerLeft.innerHTML = `<i class="fa-regular fa-clock"></i> ${
             this.#min
           }:${this.#sec}`;
-          timerLeft.classList.add('input-time-active');
+          timerLeft.classList.add("input-time-active");
         };
 
         const showTimerWarning = () => {
-          timerMin.classList.add('input-warning');
-          timerSec.classList.add('input-warning');
+          timerMin.classList.add("input-warning");
+          timerSec.classList.add("input-warning");
           this._showInvisible(timerWarning);
         };
 
         const hideTimerWarning = () => {
-          timerMin.classList.remove('input-warning');
-          timerSec.classList.remove('input-warning');
+          timerMin.classList.remove("input-warning");
+          timerSec.classList.remove("input-warning");
           this._hideVisible(timerWarning);
         };
 
@@ -1851,21 +1855,21 @@ fetch('./custom.geo.json')
           }
         };
 
-        const timerBtn = document.querySelector('.timer-btn');
-        const timerMin = document.querySelector('.timer-min');
-        const timerSec = document.querySelector('.timer-sec');
-        const timerWarning = document.querySelector('.timer-warning');
+        const timerBtn = document.querySelector(".timer-btn");
+        const timerMin = document.querySelector(".timer-min");
+        const timerSec = document.querySelector(".timer-sec");
+        const timerWarning = document.querySelector(".timer-warning");
 
         if (timerMin === null) {
           return;
         }
 
         const isTimerProperValue =
-          (checkForEl('start-timer') &&
+          (checkForEl("start-timer") &&
             checkForVal(timerMin) &&
-            checkForEl('start-timer') &&
+            checkForEl("start-timer") &&
             checkForVal(timerSec)) ||
-          (checkForEl('start-timer') &&
+          (checkForEl("start-timer") &&
             Number(timerMin.value <= 0) &&
             Number(timerSec.value < 15));
 
@@ -1905,29 +1909,29 @@ fetch('./custom.geo.json')
         };
 
         // Minimum time allowed
-        if (this.#min === '' && this.#sec === '00') {
+        if (this.#min === "" && this.#sec === "00") {
           this.#min = 0;
           this.#sec = 10;
         }
 
         // Check if clear time btn pressed
-        if (checkForEl('clear-time')) {
-          timerMin.value = timerSec.value = '';
+        if (checkForEl("clear-time")) {
+          timerMin.value = timerSec.value = "";
 
-          window.localStorage.removeItem('savedTime');
+          window.localStorage.removeItem("savedTime");
 
           // Empty the array
           this.#savedTime ? (this.#savedTime.length = 0) : this.#savedTime;
         }
 
         // Check if save time btn pressed
-        if (checkForEl('save-time')) {
+        if (checkForEl("save-time")) {
           checkSavedTime();
 
           this.#savedTime = [this.#min, this.#sec];
 
           window.localStorage.setItem(
-            'savedTime',
+            "savedTime",
             JSON.stringify(this.#savedTime)
           );
         }
@@ -1947,12 +1951,12 @@ fetch('./custom.geo.json')
         }
 
         if (checkForVal(timerSec) && !checkForVal(timerMin)) {
-          timerSec.value = '00';
+          timerSec.value = "00";
         }
 
         // Run timer
         // Convert time to nav timer and start counting down
-        if (checkForEl('start-timer')) {
+        if (checkForEl("start-timer")) {
           this._showElement(timerLeft);
 
           this.#timerInterval = setInterval(this.#countDownTimer, 1000);
@@ -1968,9 +1972,9 @@ fetch('./custom.geo.json')
 
       // Stop timer
       _stopTimer(e) {
-        const btn = e.target.closest('button');
+        const btn = e.target.closest("button");
 
-        if (btn?.classList.contains('timer-stop-btn')) {
+        if (btn?.classList.contains("timer-stop-btn")) {
           clearInterval(this.#clueTimer);
 
           // Remove all layers but markers and popups
@@ -1980,7 +1984,7 @@ fetch('./custom.geo.json')
           this.map.addLayer(this.geojson);
 
           this._createTiles(
-            'https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png'
+            "https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png"
           );
 
           // Disable buttons for countDown duration
@@ -1996,7 +2000,7 @@ fetch('./custom.geo.json')
           this._disableBtn(this.#mapClueBtn);
 
           // Prevent set timer and counting down bug
-          this.#mapClueBtn.classList.remove('counting-down');
+          this.#mapClueBtn.classList.remove("counting-down");
         }
       }
 
@@ -2031,68 +2035,68 @@ fetch('./custom.geo.json')
 
       // Zoom controls
       _zoom(zoom) {
-        zoom === 'zoomIn' ? this.map.zoomIn() : this.map.zoomOut();
+        zoom === "zoomIn" ? this.map.zoomIn() : this.map.zoomOut();
       }
 
       // Handle zoom on the map
       _handleZoom(e) {
-        const btn = e.target.closest('button');
-        const zoomIn = btn?.classList.contains('zoom-in-btn');
-        const zoomOut = btn?.classList.contains('zoom-out-btn');
+        const btn = e.target.closest("button");
+        const zoomIn = btn?.classList.contains("zoom-in-btn");
+        const zoomOut = btn?.classList.contains("zoom-out-btn");
 
         // Changing zoom levels
-        if (zoomIn) this._zoom('zoomIn');
-        if (zoomOut) this._zoom('zoomOut');
+        if (zoomIn) this._zoom("zoomIn");
+        if (zoomOut) this._zoom("zoomOut");
       }
 
       // Disable all buttons
       _disableBtns() {
-        gameDetailBtns.classList.add('unclickable');
+        gameDetailBtns.classList.add("unclickable");
       }
 
       // Enable all buttons
       _enableBtns() {
-        gameDetailBtns.classList.remove('unclickable');
+        gameDetailBtns.classList.remove("unclickable");
       }
 
       // Disable button
       _disableBtn(el) {
-        el.classList.add('btn-off');
+        el.classList.add("btn-off");
       }
 
       // Enable button
       _enableBtn(el) {
-        el.classList.remove('btn-off');
+        el.classList.remove("btn-off");
       }
 
       // Clear modal content
       _clearElement(el) {
-        el.innerHTML = '';
+        el.innerHTML = "";
       }
 
       // Hide element
       _hideElement(el) {
-        el.classList.add('hidden');
+        el.classList.add("hidden");
       }
 
       // Show element
       _showElement(el) {
-        el.classList.remove('hidden');
+        el.classList.remove("hidden");
       }
 
       // Show invisible element
       _showInvisible(el) {
-        el.classList.remove('invisible');
+        el.classList.remove("invisible");
       }
 
       // Hide visible element
       _hideVisible(el) {
-        el.classList.add('invisible');
+        el.classList.add("invisible");
       }
 
       // Remove tiles only
       _removeTilesOnly() {
-        this.map.eachLayer(layer => {
+        this.map.eachLayer((layer) => {
           if (!(layer instanceof L.Marker) && !(layer instanceof L.Popup)) {
             this.map.removeLayer(layer);
           }
@@ -2101,24 +2105,24 @@ fetch('./custom.geo.json')
 
       // Handle button clicks
       _handleClicks(e) {
-        const btn = e.target.closest('button');
+        const btn = e.target.closest("button");
 
         if (btn?.dataset === undefined) return;
 
         // Buttons
-        this.#mapClueBtn = document.querySelector('.map-clue-btn');
-        const markerBtn = document.querySelector('.marker-btn');
+        this.#mapClueBtn = document.querySelector(".map-clue-btn");
+        const markerBtn = document.querySelector(".marker-btn");
 
         // Reset marker placement if interrupted
         const resetMarkerFunc = () => {
-          const markerInfo = document.querySelector('.marker-info');
-          const root = document.querySelector(':root');
-          const mapEl = document.querySelector('#map');
-          this.map.off('click');
+          const markerInfo = document.querySelector(".marker-info");
+          const root = document.querySelector(":root");
+          const mapEl = document.querySelector("#map");
+          this.map.off("click");
           this.map.addLayer(this.geojson);
-          root.style.setProperty('--cursor', 'pointer');
-          mapEl.classList.remove('set-marker-cursor');
-          markerBtn.classList.remove('marker-active');
+          root.style.setProperty("--cursor", "pointer");
+          mapEl.classList.remove("set-marker-cursor");
+          markerBtn.classList.remove("marker-active");
 
           if (markerInfo) this._hideVisible(markerInfo);
         };
@@ -2131,14 +2135,14 @@ fetch('./custom.geo.json')
         }
 
         // Settings button
-        if (btn.classList.contains('settings-btn')) {
-          const root = document.querySelector(':root');
-          const sliderMusicEl = document.querySelector('.audio-music-input');
+        if (btn.classList.contains("settings-btn")) {
+          const root = document.querySelector(":root");
+          const sliderMusicEl = document.querySelector(".audio-music-input");
           const sliderEffectsEl = document.querySelector(
-            '.audio-effects-input'
+            ".audio-effects-input"
           );
           root.style.setProperty(
-            '--slider-gradient',
+            "--slider-gradient",
             this._colorizeSlider(sliderMusicEl),
             this._colorizeSlider(sliderEffectsEl)
           );
@@ -2146,25 +2150,25 @@ fetch('./custom.geo.json')
 
         // If game is not over and theres other modal present, reset marker placement operation
         if (
-          !btn.classList.contains('marker-active') &&
-          !this.#mapClueBtn?.classList.contains('counting-down') &&
+          !btn.classList.contains("marker-active") &&
+          !this.#mapClueBtn?.classList.contains("counting-down") &&
           this.#gameOver === false
         ) {
           resetMarkerFunc();
         }
 
         // Collapse on mobile
-        if (btn.classList.contains('collapse-btn')) {
-          gameDetailBtns.classList.toggle('mobile-collapsed');
-          collapseBtn.classList.toggle('collapse-on');
-          buttonsContainer.classList.toggle('buttons-container-on');
+        if (btn.classList.contains("collapse-btn")) {
+          gameDetailBtns.classList.toggle("mobile-collapsed");
+          collapseBtn.classList.toggle("collapse-on");
+          buttonsContainer.classList.toggle("buttons-container-on");
         }
 
         // Country's estimated position button
         let numX, numY, zoom;
 
         const estPositionDifficulty = () => {
-          if (this.#difficulty === 'easy') {
+          if (this.#difficulty === "easy") {
             numX = 2;
             numY = 2;
             zoom = 6;
@@ -2176,11 +2180,12 @@ fetch('./custom.geo.json')
         };
 
         // Estimated poisition of country
-        if (btn.classList.contains('est-position-btn')) {
+        if (btn.classList.contains("est-position-btn")) {
           estPositionDifficulty();
 
           this.#randomCountryDetails = dataCountries.features.find(
-            country => country === dataCountries.features[this.#randomCountryI]
+            (country) =>
+              country === dataCountries.features[this.#randomCountryI]
           );
 
           const countryCoordsRandom = [
@@ -2204,7 +2209,7 @@ fetch('./custom.geo.json')
           this.map.addLayer(this.geojson);
 
           this._createTiles(
-            'https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png'
+            "https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png"
           );
 
           // ANTARCTICA
@@ -2215,27 +2220,27 @@ fetch('./custom.geo.json')
           this._collapseMobileBtns();
 
           this._createTiles(
-            'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png'
+            "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
           );
 
           // Remove layer for map details & visibility
           this.map.removeLayer(this.geojson);
 
-          btn.classList.toggle('clue-on');
+          btn.classList.toggle("clue-on");
         };
 
-        if (btn.classList.contains('map-clue-btn')) {
+        if (btn.classList.contains("map-clue-btn")) {
           // Check map for clue
-          const checkMapClue = btnClass => btn.classList.contains(btnClass);
+          const checkMapClue = (btnClass) => btn.classList.contains(btnClass);
 
           // Prevent set timer and counting down bug
-          this.#mapClueBtn.classList.add('counting-down');
+          this.#mapClueBtn.classList.add("counting-down");
 
-          if (checkMapClue('map-clue-btn')) {
+          if (checkMapClue("map-clue-btn")) {
             // Prevent set timer and counting down bug
-            this.#mapClueBtn.classList.add('timer-on');
+            this.#mapClueBtn.classList.add("timer-on");
 
-            let sec = this.#difficulty === 'easy' ? 15 : 10;
+            let sec = this.#difficulty === "easy" ? 15 : 10;
 
             // Render button unclickable
             this._disableBtn(this.#mapClueBtn);
@@ -2253,7 +2258,7 @@ fetch('./custom.geo.json')
 
               // Set timer element
               timerLeft.innerHTML = `<i class="fa-solid fa-eye"></i> 0:${
-                sec < 10 ? 0 : ''
+                sec < 10 ? 0 : ""
               }${sec} <button class="timer-stop-btn">
           <i class="fa-solid fa-xmark"></i></button>`;
 
@@ -2274,7 +2279,7 @@ fetch('./custom.geo.json')
                 this._disableBtn(this.#mapClueBtn);
 
                 // Prevent set timer and counting down bug
-                this.#mapClueBtn.classList.remove('counting-down');
+                this.#mapClueBtn.classList.remove("counting-down");
               }
             };
 
@@ -2287,7 +2292,7 @@ fetch('./custom.geo.json')
             mapClueOn();
           } else return;
 
-          if (!checkMapClue('clue-on')) {
+          if (!checkMapClue("clue-on")) {
             mapClueOff();
           }
         }
@@ -2319,7 +2324,7 @@ fetch('./custom.geo.json')
         highscoreGame.textContent = this.#highscore;
 
         window.localStorage.setItem(
-          'highscoreSaved',
+          "highscoreSaved",
           JSON.stringify(this.#highscore)
         );
       }
@@ -2327,6 +2332,6 @@ fetch('./custom.geo.json')
 
     const game = new GameState();
   })
-  .catch(error => {
-    console.error('Error loading JSON file:', error);
+  .catch((error) => {
+    console.error("Error loading JSON file:", error);
   });

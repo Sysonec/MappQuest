@@ -49,7 +49,7 @@
 }
 
 .timer-count::after {
-  content: '';
+  content: "";
   display: none;
 }
 
@@ -72,7 +72,7 @@
 }
 
 .start-game::before {
-  content: '';
+  content: "";
   z-index: -1;
   position: absolute;
   top: 0;
@@ -82,7 +82,7 @@
   -webkit-filter: blur(2px);
   filter: blur(2px);
   opacity: 0.4;
-  background: url('../media/images/glow.jpg') no-repeat center/cover;
+  background: url("../media/images/glow.jpg") no-repeat center/cover;
 }
 
 /* Guess flags minigame */
@@ -117,7 +117,7 @@
 }
 
 .guess-flags-game .guess-flags .guess-flag-btn::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -134,7 +134,7 @@
 }
 
 .guess-flags-game .guess-flags .guess-flag-btn.incorrect-flag::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -143,6 +143,18 @@
   opacity: 1;
   transition: opacity 0.2s;
   background-color: rgba(0, 0, 0, 0.97);
+}
+
+.guess-flags-game .guess-flags .guess-flag-btn.correct-flag::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  transition: opacity 0.2s;
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .start-game-content,
@@ -196,7 +208,6 @@
   top: 0;
   left: 0;
   border-radius: 0;
-
   border-bottom-right-radius: 50px;
   width: 80px;
   overflow: hidden;
@@ -267,7 +278,7 @@
 }
 
 .fill-btn:before {
-  content: '';
+  content: "";
   position: absolute;
   z-index: -1;
   top: 0;
@@ -639,7 +650,7 @@
   white-space: nowrap;
 }
 
-.switch-btn input[type='checkbox'] {
+.switch-btn input[type="checkbox"] {
   position: absolute;
   opacity: 0;
   width: 0;
@@ -670,15 +681,15 @@
   pointer-events: none;
 }
 
-.switch-btn input[type='checkbox']:checked + label.switch {
+.switch-btn input[type="checkbox"]:checked + label.switch {
   background-color: var(--light-dark-color);
 }
 
-.switch-btn input[type='checkbox']:focus + label.switch {
+.switch-btn input[type="checkbox"]:focus + label.switch {
   box-shadow: 0 0 1px var(--light-dark-color);
 }
 
-.switch-btn input[type='checkbox']:checked + label.switch span.slider {
+.switch-btn input[type="checkbox"]:checked + label.switch span.slider {
   transform: translateX(25px);
 }
 
@@ -817,6 +828,126 @@
   color: var(--grey-color);
 }
 
+.timer-min::-webkit-input-placeholder,
+.timer-sec::-webkit-input-placeholder {
+  color: var(--grey-color);
+}
+
+.timer-min::-moz-placeholder,
+.timer-sec::-moz-placeholder {
+  color: var(--grey-color);
+}
+
+.timer-min:-ms-input-placeholder,
+.timer-sec:-ms-input-placeholder {
+  color: var(--grey-color);
+}
+
+.timer-min::-ms-input-placeholder,
+.timer-sec::-ms-input-placeholder {
+  color: var(--grey-color);
+}
+
+.timer-min::-webkit-input-placeholder,
+.timer-sec::-webkit-input-placeholder {
+  color: var(--grey-color);
+}
+
+.timer-min::-moz-placeholder,
+.timer-sec::-moz-placeholder {
+  color: var(--grey-color);
+}
+
+.timer-min:-ms-input-placeholder,
+.timer-sec:-ms-input-placeholder {
+  color: var(--grey-color);
+}
+
+.timer-min::-ms-input-placeholder,
+.timer-sec::-ms-input-placeholder {
+  color: var(--grey-color);
+}
+
+.timer-min::-webkit-input-placeholder,
+.timer-sec::-webkit-input-placeholder {
+  color: var(--grey-color);
+}
+
+.timer-min::-moz-placeholder,
+.timer-sec::-moz-placeholder {
+  color: var(--grey-color);
+}
+
+.timer-min:-ms-input-placeholder,
+.timer-sec:-ms-input-placeholder {
+  color: var(--grey-color);
+}
+
+.timer-min::-ms-input-placeholder,
+.timer-sec::-ms-input-placeholder {
+  color: var(--grey-color);
+}
+
+.timer-min::-webkit-input-placeholder,
+.timer-sec::-webkit-input-placeholder {
+  color: var(--grey-color);
+}
+
+.timer-min::-moz-placeholder,
+.timer-sec::-moz-placeholder {
+  color: var(--grey-color);
+}
+
+.timer-min:-ms-input-placeholder,
+.timer-sec:-ms-input-placeholder {
+  color: var(--grey-color);
+}
+
+.timer-min::-ms-input-placeholder,
+.timer-sec::-ms-input-placeholder {
+  color: var(--grey-color);
+}
+
+.timer-min::-webkit-input-placeholder,
+.timer-sec::-webkit-input-placeholder {
+  color: var(--grey-color);
+}
+
+.timer-min::-moz-placeholder,
+.timer-sec::-moz-placeholder {
+  color: var(--grey-color);
+}
+
+.timer-min:-ms-input-placeholder,
+.timer-sec:-ms-input-placeholder {
+  color: var(--grey-color);
+}
+
+.timer-min::-ms-input-placeholder,
+.timer-sec::-ms-input-placeholder {
+  color: var(--grey-color);
+}
+
+.timer-min::-webkit-input-placeholder,
+.timer-sec::-webkit-input-placeholder {
+  color: var(--grey-color);
+}
+
+.timer-min::-moz-placeholder,
+.timer-sec::-moz-placeholder {
+  color: var(--grey-color);
+}
+
+.timer-min:-ms-input-placeholder,
+.timer-sec:-ms-input-placeholder {
+  color: var(--grey-color);
+}
+
+.timer-min::-ms-input-placeholder,
+.timer-sec::-ms-input-placeholder {
+  color: var(--grey-color);
+}
+
 .timer-min::placeholder,
 .timer-sec::placeholder {
   color: var(--grey-color);
@@ -887,7 +1018,7 @@
 }
 
 .game-details div::after {
-  content: '';
+  content: "";
   z-index: -1;
   position: absolute;
   top: 0;
@@ -1019,7 +1150,7 @@
 }
 
 .tooltip-text::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -1033,7 +1164,7 @@
 }
 
 .tooltip-text::after {
-  content: '';
+  content: "";
   display: block;
   position: absolute;
   width: 0;

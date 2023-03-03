@@ -559,10 +559,16 @@ fetch("./custom.geo.json")
                 info.flagAlt
               }">
               <p>You've found: <span>${countryClick}</span></p>
-              <p>Capital: <span>${info.capitalCity}</span></p>
-              <p>Language: <span>${info.languages.join(", ")}</span></p>
-              <p>Population: <span>${info.population}</span></p>
-              <p>Currency: <span style="word-wrap: break-word;">${
+              <p><i class="fa-solid fa-building-columns"></i> Capital: <span>${
+                info.capitalCity
+              }</span></p>
+              <p><i class="fa-solid fa-language"></i> Language: <span>${info.languages.join(
+                ", "
+              )}</span></p>
+              <p><i class="fa-solid fa-people-roof"></i> Population: <span>${
+                info.population
+              }</span></p>
+              <p><i class="fa-solid fa-money-bill-wave"></i> Currency: <span style="word-wrap: break-word;">${
                 info.currencies
               }</span></p>
             </div>`);
@@ -1455,10 +1461,18 @@ fetch("./custom.geo.json")
                 info.flagAlt
               }">
           <p>You've found: <span>${this.#randomCountry}</span></p>
-          <p>Capital: <span>${info.capitalCity}</span></p>
-          <p>Language: <span>${info.languages.join(", ")}</span></p>
-          <p>Population: <span>${info.population}</span></p>
-          <p>Currency: <span>${info.currencies}</span></p>
+          <p><i class="fa-solid fa-building-columns"></i> Capital: <span>${
+            info.capitalCity
+          }</span></p>
+          <p><i class="fa-solid fa-language"></i> Language: <span>${info.languages.join(
+            ", "
+          )}</span></p>
+          <p><i class="fa-solid fa-people-roof"></i> Population: <span>${
+            info.population
+          }</span></p>
+          <p><i class="fa-solid fa-money-bill-wave"></i> Currency: <span>${
+            info.currencies
+          }</span></p>
         </div>`
             )
             .setLatLng(this.#countryCoords)

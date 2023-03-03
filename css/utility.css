@@ -1,5 +1,5 @@
 /* Roboto Google Font */
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap");
 
 /* Reset styling */
 * {
@@ -13,7 +13,7 @@ input,
 .popup-custom .leaflet-popup-content-wrapper,
 html,
 .leaflet-tooltip-left {
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: "Roboto Condensed", sans-serif;
 }
 
 html {
@@ -131,11 +131,19 @@ body {
 .leaflet-popup-content .popup-correct-info p {
   font-size: 1.4rem;
   margin: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.leaflet-popup-content .popup-correct-info p i {
+  margin-right: 5px;
+  font-size: 1.7rem;
 }
 
 .popup-correct-info span {
   color: var(--light-dark-color);
   font-size: 1.4rem;
+  margin-left: 5px;
 }
 
 .popup-correct-img {
@@ -240,23 +248,23 @@ body {
 }
 /* Hide input number arrows/spinners */
 /* For chrome, Safari, Edge, Opera : */
-input[type='number']::-webkit-outer-spin-button,
-input[type='number']::-webkit-inner-spin-button {
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
 /* For firefox : */
-input[type='number'] {
+input[type="number"] {
   -moz-appearance: textfield;
 }
 
-input[type='number'] {
+input[type="number"] {
   outline: none;
 }
 
 /* Custom slider */
-input[type='range'] {
+input[type="range"] {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -269,19 +277,19 @@ input[type='range'] {
 }
 
 /* Chrome, Safari, Opera, and Edge Chromium */
-input[type='range']::-webkit-slider-runnable-track {
+input[type="range"]::-webkit-slider-runnable-track {
   height: 4px;
   border-radius: 5px;
 }
 
 /* Firefox */
-input[type='range']::-moz-range-track {
+input[type="range"]::-moz-range-track {
   height: 4px;
   border-radius: 5px;
 }
 
 /* Chrome */
-input[type='range']::-webkit-slider-thumb {
+input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   margin-top: -6.5px;
@@ -293,7 +301,7 @@ input[type='range']::-webkit-slider-thumb {
 }
 
 /* Firefox */
-input[type='range']::-moz-range-thumb {
+input[type="range"]::-moz-range-thumb {
   border: none; /*Removes extra border that FF applies*/
   border-radius: 0; /*Removes default border-radius that FF applies*/
   background-color: var(--light-dark-color);

@@ -553,25 +553,9 @@ fetch("./custom.geo.json")
               popupCorrect = L.popup({
                 className: "popup-custom",
                 autoPan: false,
-              }).setLatLng(coords).setContent(`
-            <div class="popup-correct-info">
-              <img class="popup-correct-img" src=${info.flagImg} alt="${
-                info.flagAlt
-              }">
-              <p>You've found: <span>${countryClick}</span></p>
-              <p><i class="fa-solid fa-building-columns"></i> Capital: <span>${
-                info.capitalCity
-              }</span></p>
-              <p><i class="fa-solid fa-language"></i> Language: <span>${info.languages.join(
-                ", "
-              )}</span></p>
-              <p><i class="fa-solid fa-people-roof"></i> Population: <span>${
-                info.population
-              }</span></p>
-              <p><i class="fa-solid fa-money-bill-wave"></i> Currency: <span style="word-wrap: break-word;">${
-                info.currencies
-              }</span></p>
-            </div>`);
+              })
+                .setLatLng(coords)
+                .setContent(this._setPopupContent(info));
 
               this.map.openPopup(popupCorrect);
             });
@@ -1445,6 +1429,30 @@ fetch("./custom.geo.json")
         };
       }
 
+      // Set popup content (country popup)
+      _setPopupContent(data) {
+        const html = `<div class="popup-correct-info">
+            <img class="popup-correct-img" src=${data.flagImg} alt="${
+          data.flagAlt
+        }">
+            <p>You've found: <span>${this.#randomCountry}</span></p>
+            <p><i class="fa-solid fa-building-columns"></i> Capital: <span>${
+              data.capitalCity
+            }</span></p>
+            <p><i class="fa-solid fa-language"></i> Language: <span>${data.languages.join(
+              ", "
+            )}</span></p>
+            <p><i class="fa-solid fa-people-roof"></i> Population: <span>${
+              data.population
+            }</span></p>
+            <p><i class="fa-solid fa-money-bill-wave"></i> Currency: <span>${
+              data.currencies
+            }</span></p>
+        </div>`;
+
+        return html;
+      }
+
       // Create marker with popup
       _gameOverMarker() {
         const countryInfo = this._displayCountryInfo();
@@ -1455,26 +1463,7 @@ fetch("./custom.geo.json")
             className: "popup-custom",
             autoPan: false,
           })
-            .setContent(
-              `<div class="popup-correct-info">
-            <img class="popup-correct-img" src=${info.flagImg} alt="${
-                info.flagAlt
-              }">
-          <p>You've found: <span>${this.#randomCountry}</span></p>
-          <p><i class="fa-solid fa-building-columns"></i> Capital: <span>${
-            info.capitalCity
-          }</span></p>
-          <p><i class="fa-solid fa-language"></i> Language: <span>${info.languages.join(
-            ", "
-          )}</span></p>
-          <p><i class="fa-solid fa-people-roof"></i> Population: <span>${
-            info.population
-          }</span></p>
-          <p><i class="fa-solid fa-money-bill-wave"></i> Currency: <span>${
-            info.currencies
-          }</span></p>
-        </div>`
-            )
+            .setContent(this._setPopupContent(info))
             .setLatLng(this.#countryCoords)
 
             .openOn(this.map);
@@ -1579,7 +1568,6 @@ fetch("./custom.geo.json")
         );
 
         if (this.#audioSlider === null && this.#audioEffectsSlider === null) {
-          console.log("audio and effects sliders not found");
           return;
         }
 

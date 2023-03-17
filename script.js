@@ -1431,11 +1431,12 @@ fetch("./custom.geo.json")
 
       // Set popup content (country popup)
       _setPopupContent(data) {
+        console.log(data);
         const html = `<div class="popup-correct-info">
             <img class="popup-correct-img" src=${data.flagImg} alt="${
           data.flagAlt
         }">
-            <p>You've found: <span>${this.#randomCountry}</span></p>
+            <p>You've found: <span>${data.countryFound.name.common}</span></p>
             <p><i class="fa-solid fa-building-columns"></i> Capital: <span>${
               data.capitalCity
             }</span></p>
